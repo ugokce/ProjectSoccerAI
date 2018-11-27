@@ -40,7 +40,7 @@ public class SoccerDemo extends StateBasedGame {
         SimpleSoccerPlayer p1 = new SimpleSoccerPlayer(demo.getGameState(),0,new SimplePlayerAI());
         SimpleSoccerPlayer pl1 = new SimpleSoccerPlayer(demo.getGameState(),0,new SimplePlayerAI());
         SimpleSoccerPlayer pl2 = new SimpleSoccerPlayer(demo.getGameState(),0,new SimplePlayerAI());
-        
+
 
 
         SimpleSoccerPlayer pl3 = new SimpleSoccerPlayer(demo.getGameState(),1,new SimplePlayerAI());
