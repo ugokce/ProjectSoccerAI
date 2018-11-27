@@ -15,6 +15,9 @@ public class SoccerDemo extends StateBasedGame {
 
  //deneme
 
+    
+    
+    
     public SoccerDemo(String name) {
         super(name);
         addState(new SoccerGameState());
