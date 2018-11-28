@@ -13,7 +13,7 @@ public class SoccerDemo extends StateBasedGame {
     private static final int DemoHeight = 600;
     private final int pitch =0;
 
- //deneme deneme masaustu 2
+ //enerji enerji azcık da sinerji dışarda hayat var
 
     
     
