@@ -1,6 +1,8 @@
-package arhrs.movement.sccr.internal;
+package arhrs.movement.sccr.internal.GoztepeAI;
 
 
+import arhrs.movement.sccr.internal.SoccerGame;
+import arhrs.movement.sccr.internal.SoccerPlayer;
 import arhrs.movement.steering.SteeringBehavior;
 import arhrs.movement.steering.SteeringInfo;
 

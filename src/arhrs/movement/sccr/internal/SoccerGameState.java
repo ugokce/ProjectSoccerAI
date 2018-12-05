@@ -24,11 +24,13 @@ class SoccerGameState extends BasicGameState implements SoccerGame {
             { new Vector2D[] {
                     new Vector2D(400,300),
                     new Vector2D(300,450),
+                    new Vector2D(300,150),
                     new Vector2D(300,150)
                 },
                     new Vector2D[] {
                             new Vector2D(600,300),
                             new Vector2D(700,450),
+                            new Vector2D(700,150),
                             new Vector2D(700,150)
                     }
             };
@@ -251,6 +253,7 @@ class SoccerGameState extends BasicGameState implements SoccerGame {
     }
 
     public Rectangle2D getBounds() {
+        
         return new Rectangle2D.Double(-2,-2,width+4,height+4);
     }
 

@@ -1,5 +1,6 @@
 package arhrs.movement.sccr;
 
+import arhrs.movement.sccr.internal.GoztepeAI.PlayerAI;
 import arhrs.movement.sccr.internal.*;
 import arhrs.movement.sccr.internal.SoccerPlayer;
 import arhrs.movement.steering.Seek;

@@ -13,7 +13,7 @@ public class SoccerDemo extends StateBasedGame {
     private static final int DemoHeight = 600;
     private final int pitch =0;
 
- //enerji enerji azcık da sinerji dışarda hayat var
+
 
     
     
@@ -40,20 +40,24 @@ public class SoccerDemo extends StateBasedGame {
         SimpleSoccerPlayer p1 = new SimpleSoccerPlayer(demo.getGameState(),0,new SimplePlayerAI());
         SimpleSoccerPlayer pl1 = new SimpleSoccerPlayer(demo.getGameState(),0,new SimplePlayerAI());
         SimpleSoccerPlayer pl2 = new SimpleSoccerPlayer(demo.getGameState(),0,new SimplePlayerAI());
-        
+        SimpleSoccerPlayer pl7 = new SimpleSoccerPlayer(demo.getGameState(),0,new SimplePlayerAI());
 
 
         SimpleSoccerPlayer pl3 = new SimpleSoccerPlayer(demo.getGameState(),1,new SimplePlayerAI());
         SimpleSoccerPlayer pl4 = new SimpleSoccerPlayer(demo.getGameState(),1,new SimplePlayerAI());
         SimpleSoccerPlayer pl5 = new SimpleSoccerPlayer(demo.getGameState(),1,new SimplePlayerAI());
+        SimpleSoccerPlayer pl6 = new SimpleSoccerPlayer(demo.getGameState(),1,new SimplePlayerAI());
 
 
         demo.getGameState().addPlayer(0,p1);
         demo.getGameState().addPlayer(0,pl1);
         demo.getGameState().addPlayer(0,pl2);
+        demo.getGameState().addPlayer(0,pl2);
         demo.getGameState().addPlayer(1,pl3);
         demo.getGameState().addPlayer(1,pl4);
         demo.getGameState().addPlayer(1,pl5);
+        demo.getGameState().addPlayer(0, pl7);
+        demo.getGameState().addPlayer(1, pl6);
 
         Bootstrap.runAsApplication(demo,DemoWidth,DemoHeight,false);
 
