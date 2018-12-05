@@ -22,16 +22,18 @@ class SoccerGameState extends BasicGameState implements SoccerGame {
 //futbolcuların başlama noktaları(kendi game stateimizi yazacağız her futbolcu için ayrı posizsyonlar belirtmemiz gerek)
     private static final Vector2D initialPositions[][]= new Vector2D[][]
             { new Vector2D[] {
-                    new Vector2D(400,300),
-                    new Vector2D(300,450),
-                    new Vector2D(300,150),
-                    new Vector2D(300,150)
+                    new Vector2D(150,150),
+                    new Vector2D(150,350),
+                    new Vector2D(350,100),
+                    new Vector2D(350,400),
+                    new Vector2D(400,250),
                 },
                     new Vector2D[] {
-                            new Vector2D(600,300),
-                            new Vector2D(700,450),
-                            new Vector2D(700,150),
-                            new Vector2D(700,150)
+                            new Vector2D(750,150),
+                            new Vector2D(750,350),
+                            new Vector2D(550,100),
+                            new Vector2D(550,400),
+                            new Vector2D(500,250),
                     }
             };
 
