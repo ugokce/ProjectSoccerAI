@@ -19,7 +19,7 @@ import static arhrs.movement.sccr.internal.SoccerBall.BallRadius;
 
 class SoccerGameState extends BasicGameState implements SoccerGame {
 
-
+//futbolcuların başlama noktaları(kendi game stateimizi yazacağız her futbolcu için ayrı posizsyonlar belirtmemiz gerek)
     private static final Vector2D initialPositions[][]= new Vector2D[][]
             { new Vector2D[] {
                     new Vector2D(400,300),

@@ -14,11 +14,13 @@ public class SimplePlayerAI implements PlayerAI {
 
     @Override
     public void init(SoccerPlayer soccerPlayer, SoccerGame game) {
+       //topu nereye doğru vuracak onu buluyor(hangşi kale)
         kickTarget = game.getGoalAreaCenter(game.opponent(soccerPlayer.getTeam()));
     }
 
     @Override
     public SteeringBehavior getSteering(SoccerPlayer soccerPlayer, SoccerGame game) {
+      //Burada futbolcunun hareket algoritması yazılacak
         return new Seek(game.getBallPosition());
     }
 
@@ -28,6 +30,7 @@ public class SimplePlayerAI implements PlayerAI {
 
         SoccerPlayer p = game.getPlayer(0,0);
 
+//topun hareketini eğer vurulacak top varsa topa vurup döndürüyor
 
         if (kickTarget!= null)
             return new SteeringInfo(kickTarget.minus(soccerPlayer.getPosition()),0, SteeringInfo.SteeringType.Kinematic);
