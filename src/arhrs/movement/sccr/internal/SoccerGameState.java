@@ -2,9 +2,10 @@ package arhrs.movement.sccr.internal;
 
 
 import arhrs.movement.GameEntity;
-import arhrs.movement.steering.SteeringInfo;
-import arhrs.util.VectorUtils;
 import arhrs.movement.StaticInfo;
+import arhrs.movement.steering.SteeringInfo;
+import arhrs.util.RandomUtils;
+import arhrs.util.VectorUtils;
 import math.geom2d.Vector2D;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
@@ -19,21 +20,22 @@ import static arhrs.movement.sccr.internal.SoccerBall.BallRadius;
 
 class SoccerGameState extends BasicGameState implements SoccerGame {
 
-//futbolcuların başlama noktaları(kendi game stateimizi yazacağız her futbolcu için ayrı posizsyonlar belirtmemiz gerek)
+
     private static final Vector2D initialPositions[][]= new Vector2D[][]
-            { new Vector2D[] {
-                    new Vector2D(150,150),
-                    new Vector2D(150,350),
-                    new Vector2D(350,100),
-                    new Vector2D(350,400),
-                    new Vector2D(400,250),
-                },
+            {
                     new Vector2D[] {
-                            new Vector2D(750,150),
-                            new Vector2D(750,350),
-                            new Vector2D(550,100),
-                            new Vector2D(550,400),
-                            new Vector2D(500,250),
+                            new Vector2D(60,260),
+                            new Vector2D(160,160),
+                            new Vector2D(160,360),
+                            new Vector2D(260,160),
+                            new Vector2D(260,360),
+                    },
+                    new Vector2D[] {
+                            new Vector2D(860,260),
+                            new Vector2D(760,160),
+                            new Vector2D(760,360),
+                            new Vector2D(660,160),
+                            new Vector2D(660,360),
                     }
             };
 
@@ -55,6 +57,8 @@ class SoccerGameState extends BasicGameState implements SoccerGame {
     private List<GoalListener> goalListeners = new ArrayList<>();
 
     ScoreBoard scoreBoard;
+    private GameContainer gameContainer;
+    boolean gameOver= false;
 
 
     public float getWidth() {
@@ -70,7 +74,7 @@ class SoccerGameState extends BasicGameState implements SoccerGame {
     public void addPlayer(int team , SimpleSoccerPlayer player)
     {
         players[team].add(player);
-        player.setInitialPosition(initialPositions[team][players[team].size()-1]);
+        player.setInitialPosition(initialPositions[team][players[team].size()-1].clone());
         goalListeners.add(player);
     }
 
@@ -82,6 +86,9 @@ class SoccerGameState extends BasicGameState implements SoccerGame {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
+        gameOver = false;
+
+        this.gameContainer = gameContainer;
         width = gameContainer.getWidth()-2*FRAME_WIDTH;
         height = gameContainer.getHeight()-2*FRAME_WIDTH;
 
@@ -186,6 +193,7 @@ class SoccerGameState extends BasicGameState implements SoccerGame {
 
 
     private void renderEtities(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) {
+
         ball.render(gameContainer,stateBasedGame,graphics);
         for (GameEntity e : players[0]
              ) {
@@ -199,16 +207,23 @@ class SoccerGameState extends BasicGameState implements SoccerGame {
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
+        if (gameOver)
+            return;
+
+
         ball.update(gameContainer,stateBasedGame,i);
 
         checkGoal();
 
         SimpleSoccerPlayer closestPlayer = players[0].get(0);
         double minDistance= VectorUtils.distance(ball.getPosition(),closestPlayer.getPosition());
-        for (SimpleSoccerPlayer e : players[0]
+
+        int turn = RandomUtils.nextInt(2);
+        for (SimpleSoccerPlayer e : players[turn]
         ) {
             e.update(gameContainer,stateBasedGame,i); // For Debugging purposes kept 1
             double d = VectorUtils.distance(ball.getPosition(),e.getPosition());
+            assert !Double.isNaN(d);
             if (d<minDistance)
             {
                 minDistance = d;
@@ -216,10 +231,12 @@ class SoccerGameState extends BasicGameState implements SoccerGame {
             }
 
         }
-        for (SimpleSoccerPlayer e : players[1]
+        int opponent = (turn+1)%2;
+        for (SimpleSoccerPlayer e : players[opponent]
         ) {
             e.update(gameContainer,stateBasedGame,i); // For Debugging purposes kept 1
             double d = VectorUtils.distance(ball.getPosition(),e.getPosition());
+            assert !Double.isNaN(d);
             if (d<minDistance)
             {
                 minDistance = d;
@@ -232,6 +249,8 @@ class SoccerGameState extends BasicGameState implements SoccerGame {
         {
             performKick(closestPlayer.getBallSteering());
         }
+
+
     }
 
     private void checkGoal() {
@@ -251,11 +270,12 @@ class SoccerGameState extends BasicGameState implements SoccerGame {
     }
 
     private void performKick(SteeringInfo ballSteering) {
+
         ball.setKinematic(ballSteering);
+
     }
 
     public Rectangle2D getBounds() {
-        
         return new Rectangle2D.Double(-2,-2,width+4,height+4);
     }
 
@@ -295,5 +315,14 @@ class SoccerGameState extends BasicGameState implements SoccerGame {
             return new Vector2D(0,height/2);
         }
         else return new Vector2D(width,height/2);
+    }
+
+    public void disqualify(SimpleSoccerPlayer simpleSoccerPlayer) {
+        if (!gameOver) {
+            System.out.println("Team-" + simpleSoccerPlayer.getTeam() + " is disqualfied.");
+            System.out.println("Team-" + opponent(simpleSoccerPlayer.getTeam()) + " won by forfeit");
+            gameContainer.exit();
+            gameOver = true;
+        }
     }
 }

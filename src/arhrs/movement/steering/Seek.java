@@ -6,6 +6,7 @@ import arhrs.movement.StaticInfo;
 
 public class Seek implements SteeringBehavior {
 
+    private static final double SeekThreshold = 0.01;
     Vector2D targetPosition;
 
     double maxacceleration = 0.5;
@@ -19,6 +20,8 @@ public class Seek implements SteeringBehavior {
         Vector2D linear = targetPosition.minus(staticInfo.getPosition());
         double rotation =0;
 
+        if (linear.norm()<SeekThreshold)
+            return SteeringInfo.getNoSteering();
         if (linear.norm()>maxacceleration)
         {
             linear= linear.normalize().times(maxacceleration);

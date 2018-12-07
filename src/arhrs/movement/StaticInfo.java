@@ -1,9 +1,11 @@
 package arhrs.movement;
 
+import javafx.geometry.Point2DBuilder;
 import math.geom2d.Vector2D;
 import arhrs.movement.steering.SteeringInfo;
 
 public class StaticInfo {
+
 
     public enum OrientationType {VelocityBased, Explicit};
 
@@ -63,5 +65,9 @@ public class StaticInfo {
                 orientation+= steeringInfo.angular*time*time*0.5;
         }
 
+
+
+        assert !Double.isNaN(position.x());
+        assert !Double.isNaN(position.y());
     }
 }

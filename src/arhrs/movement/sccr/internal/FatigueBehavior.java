@@ -16,7 +16,7 @@ public class FatigueBehavior implements SteeringBehavior {
         {
             return new SteeringInfo(kinematicInfo.getVelocity().opposite().normalize().times(FatigeSlowDownRatio),0, SteeringInfo.SteeringType.Dynamic);
         }
-        return SteeringInfo.NoSteering;
+        return SteeringInfo.getNoSteering();
     }
 
     @Override

@@ -14,5 +14,6 @@ public interface SoccerPlayer {
     double getFatigueSpeed();
     double getMaxStamina();
     double getMinStamina();
+    double getMaxSpeed();
     double getStaminaIncrement();
 }

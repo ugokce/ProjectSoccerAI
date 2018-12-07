@@ -1,8 +1,8 @@
 package arhrs.movement.sccr.internal;
 
-import arhrs.movement.BasicGameEntity;  //live.movement.BasicGameEntity;
-import arhrs.movement.Renderable;   //live.movement.Renderable;
-import arhrs.movement.StaticInfo;  //live.movement.StaticInfo;
+
+import arhrs.movement.BasicGameEntity;
+import arhrs.movement.StaticInfo;
 
 public class ScoreBoard extends BasicGameEntity implements GoalListener {
     private int[] score= new int[2];

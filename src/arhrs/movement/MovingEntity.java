@@ -13,7 +13,7 @@ public class MovingEntity extends BasicGameEntity
 
     private double MaxVelocity = 1;
     private double MaxRotation = 0.1;
-    private static final double TIME_COEFFICIENT = 0.1;
+    private static final double TIME_COEFFICIENT = 0.2;
     protected KinematicInfo kinematicInfo;
     Rectangle2D bounds;
 
@@ -46,9 +46,12 @@ public class MovingEntity extends BasicGameEntity
         super.update(gameContainer, stateBasedGame, i);
 
         SteeringInfo steeringInfo = (steeringBehavior != null) ?
-                                    steeringBehavior.getSteering(staticInfo,kinematicInfo):SteeringInfo.NoSteering;
+                                    steeringBehavior.getSteering(staticInfo,kinematicInfo):SteeringInfo.getNoSteering();
+
 
         kinematicInfo.update(steeringInfo,1*TIME_COEFFICIENT,MaxVelocity,MaxRotation);
+
+
         staticInfo.update(kinematicInfo,steeringInfo,1* TIME_COEFFICIENT);
 
         if (collisionHandler!=null)

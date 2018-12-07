@@ -34,7 +34,7 @@ public class Arrive implements SteeringBehavior {
         double distance = direction.norm();
 
         if (distance<targetRadius)
-            return SteeringInfo.NoSteering;
+            return SteeringInfo.getNoSteering();
 
         double targetSpeed = (distance>slowDownRadius)?  maxSpeed: maxSpeed*distance/slowDownRadius;
 

@@ -1,6 +1,7 @@
 package arhrs.movement.steering;
 
 
+
 import arhrs.util.RandomUtils;
 import math.geom2d.Vector2D;
 import arhrs.movement.KinematicInfo;

@@ -13,6 +13,7 @@ public class SoccerBall extends MovingEntity implements GoalListener {
     public static final Color BallColor = Color.black;
     public static final float BallRadius = 5;
     public static final double FrictionCoefficient = 0.05;
+    private static final double MinBallSpeed = 0.0001;
 
     Vector2D initialPosition;
 
@@ -30,7 +31,9 @@ public class SoccerBall extends MovingEntity implements GoalListener {
 
     void setKinematic(SteeringInfo steeringInfo)
     {
-        kinematicInfo = new KinematicInfo(steeringInfo.linear.normalize().times(SoccerGame.MaxBallSpeed),0);
+        if (steeringInfo.linear.norm()<MinBallSpeed)
+            kinematicInfo = new KinematicInfo(new Vector2D(0,0),0);
+        else kinematicInfo = new KinematicInfo(steeringInfo.linear.normalize().times(SoccerGame.MaxBallSpeed),0);
     }
 
     @Override

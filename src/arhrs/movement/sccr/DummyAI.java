@@ -1,13 +1,14 @@
 package arhrs.movement.sccr;
 
-import arhrs.movement.sccr.internal.*;
+import arhrs.movement.sccr.internal.PlayerAI;
+import arhrs.movement.sccr.internal.SoccerGame;
 import arhrs.movement.sccr.internal.SoccerPlayer;
 import arhrs.movement.steering.Seek;
 import arhrs.movement.steering.SteeringBehavior;
 import arhrs.movement.steering.SteeringInfo;
 import math.geom2d.Vector2D;
 
-public class SimplePlayerAI implements PlayerAI {
+public class DummyAI implements PlayerAI {
 
 
     Vector2D kickTarget;
@@ -21,7 +22,7 @@ public class SimplePlayerAI implements PlayerAI {
     public SteeringBehavior getSteering(SoccerPlayer soccerPlayer, SoccerGame game) {
 
 
-        return new Seek(game.getBallPosition());
+        return null;
     }
 
     @Override

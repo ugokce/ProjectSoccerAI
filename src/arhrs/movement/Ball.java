@@ -2,6 +2,9 @@ package arhrs.movement;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.ShapeFill;
+import org.newdawn.slick.geom.Polygon;
+import org.newdawn.slick.geom.Shape;
 
 public class Ball extends BasicRenderable {
 
@@ -20,6 +23,8 @@ public class Ball extends BasicRenderable {
         float ey = (float) (staticInfo.position.y()+ radius* Math.sin(staticInfo.orientation));
         graphics.setColor(Color.black);
         graphics.drawLine((float) staticInfo.position.x(),(float) staticInfo.position.y(),ex,ey);
+
+
     }
 
     @Override

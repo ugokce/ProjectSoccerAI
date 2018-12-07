@@ -33,7 +33,7 @@ public class Align implements SteeringBehavior {
        double rotationSize= Math.abs(rotation);
 
        if (rotationSize<targetRadius)
-           return SteeringInfo.NoSteering;
+           return SteeringInfo.getNoSteering();
 
        double targetRotation = (rotationSize>slowDownRadius)? maxRotation: maxRotation*rotationSize/slowDownRadius;
        targetRotation *= (rotation/rotationSize);

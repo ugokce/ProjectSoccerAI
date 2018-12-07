@@ -20,7 +20,7 @@ public class Friction implements SteeringBehavior {
             return new SteeringInfo(kinematicInfo.getVelocity().opposite().normalize().times(frictionCoefficient).rotate(noise), 0, SteeringInfo.SteeringType.Dynamic);
 
         }
-        return SteeringInfo.NoSteering;
+        return SteeringInfo.getNoSteering();
     }
 
     @Override

@@ -24,7 +24,7 @@ public class Face implements SteeringBehavior {
         Vector2D direction = target.getPosition().minus(staticInfo.getPosition());
 
         if (direction.norm()==0)
-            return SteeringInfo.NoSteering;
+            return SteeringInfo.getNoSteering();
 
         double orientation = Math.atan2(direction.y(),direction.x());
 

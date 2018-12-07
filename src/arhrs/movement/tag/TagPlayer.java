@@ -2,10 +2,11 @@ package arhrs.movement.tag;
 
 
 
-import arhrs.util.RandomUtils;
+
 import arhrs.movement.*;
 import arhrs.movement.steering.*;
 
+import arhrs.util.RandomUtils;
 import math.geom2d.Vector2D;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
