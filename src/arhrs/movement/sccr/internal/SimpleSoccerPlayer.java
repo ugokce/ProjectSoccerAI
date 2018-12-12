@@ -24,7 +24,7 @@ class SimpleSoccerPlayer extends MovingEntity implements SoccerPlayer,GoalListen
     public static final double MaxStamina = 100;
     public static final double MinStamina = 0;
     private static final double StaminaPenalty = 0.8;
-    private static final long TimeOut = 5; // MILLISECONDS
+    private static final long TimeOut = 300; // MILLISECONDS
 
     protected final SoccerGameState gameState;
     private final int team;
@@ -67,16 +67,16 @@ class SimpleSoccerPlayer extends MovingEntity implements SoccerPlayer,GoalListen
 
     @Override
     public final void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) {
-
+/*
         steeringBehavior = playerAI.getSteering(this,gameState);
         if (canKickBall())
             ballSteering = playerAI.getBallSteering(this,gameState);
-
+*/
 
         if (disqualified)
             return;
 
-        //performAICall();
+        performAICall();
         applyPlayerLimits();
 
         super.update(gameContainer,stateBasedGame,i);
@@ -148,7 +148,7 @@ class SimpleSoccerPlayer extends MovingEntity implements SoccerPlayer,GoalListen
     }
 
     private boolean canKickBall() {
-        return (VectorUtils.distance(staticInfo.getPosition(),gameState.getBall().getPosition())<SoccerGame.KickDistance);
+        return (VectorUtils.distance(staticInfo.getPosition(),gameState.getBall().getPosition())<3*SoccerGame.KickDistance);
     }
 
 

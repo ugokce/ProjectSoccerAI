@@ -3,8 +3,7 @@ package arhrs.movement.sccr.internal;
 
 import arhrs.movement.sccr.DummyAI;
 import arhrs.movement.sccr.SimplePlayerAI;
-
-
+import arhrs.movement.sccr.bots.demo.SoccerBot;
 import math.geom2d.Vector2D;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
