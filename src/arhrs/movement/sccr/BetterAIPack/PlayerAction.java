@@ -14,16 +14,17 @@ import live.decisiconmaking.decisiontree.Action;
  * @author Uğurcan
  */
 public class PlayerAction extends Action{
+    //burada objemiz seek gibi her action için spesifik(mesela topu kap,bölgeme dön tarzı) steeringbehaviour lar alacak ve gerektiğinde onları döndürecek.
     
-    SteeringInfo playerBehaviour;
+    SteeringBehavior playerBehaviour;
             
-    public  PlayerAction(SteeringInfo behaviour )
+    public  PlayerAction(SteeringBehavior behaviour )
     {
         this.playerBehaviour = behaviour;
     }
     
     
-    public SteeringInfo getSteering()
+    public SteeringBehavior getSteering()
     {
         
         return this.playerBehaviour;
