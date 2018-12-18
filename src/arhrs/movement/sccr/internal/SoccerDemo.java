@@ -3,7 +3,6 @@ package arhrs.movement.sccr.internal;
 
 import arhrs.movement.sccr.DummyAI;
 import arhrs.movement.sccr.SimplePlayerAI;
-import arhrs.movement.sccr.bots.demo.SoccerBot;
 import math.geom2d.Vector2D;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
@@ -43,7 +42,7 @@ public class SoccerDemo extends StateBasedGame {
       //  SimpleSoccerPlayer p15 = new SimpleSoccerPlayer(demo.getGameState(),0,new SoccerBot(4));
 
 
-        SimpleSoccerPlayer p11 = new SimpleSoccerPlayer(demo.getGameState(),0,new SimplePlayerAI());
+       SimpleSoccerPlayer p11 = new SimpleSoccerPlayer(demo.getGameState(),0,new SimplePlayerAI());
         SimpleSoccerPlayer p12 = new SimpleSoccerPlayer(demo.getGameState(),0,new SimplePlayerAI());
         SimpleSoccerPlayer p13 = new SimpleSoccerPlayer(demo.getGameState(),0,new SimplePlayerAI());
         SimpleSoccerPlayer p14 = new SimpleSoccerPlayer(demo.getGameState(),0,new SimplePlayerAI());
