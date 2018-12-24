@@ -16,7 +16,7 @@ import live.decisiconmaking.decisiontree.Action;
 public class PlayerAction extends Action{
     //burada objemiz seek gibi her action için spesifik(mesela topu kap,bölgeme dön tarzı) steeringbehaviour lar alacak ve gerektiğinde onları döndürecek.
     
-    SteeringBehavior playerBehaviour;
+    public SteeringBehavior playerBehaviour;
             
     public  PlayerAction(SteeringBehavior behaviour )
     {

@@ -12,6 +12,7 @@ public class DecisionTreeDemo {
             Action action = root.makeDecision(null);
             System.out.println(action);
             System.out.println("-------------------------------------------");
+            
         }
     }
 

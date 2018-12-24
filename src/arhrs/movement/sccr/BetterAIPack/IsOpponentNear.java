@@ -25,7 +25,6 @@ public class IsOpponentNear implements DecisionCase{
     public boolean Check(GameData gamedata) {
        
         boolean isNotFree=true;
-        Graphics g = new Graphics();
         SoccerGame game = gamedata.getGame();
         SoccerPlayer soccerPlayer = gamedata.getPlayer();
         Vector2D opponentGoal = game.getGoalAreaCenter(game.opponent(soccerPlayer.getTeam()));
@@ -36,19 +35,19 @@ public class IsOpponentNear implements DecisionCase{
              {
                  if((diffOur+diffLimit)<Math.sqrt(VectorCalculator.CalculateMagnitude(game.getPlayer(opponentTeam, i).getPosition(), soccerPlayer.getPosition())*VectorCalculator.CalculateMagnitude(game.getPlayer(opponentTeam, i).getPosition(), soccerPlayer.getPosition())*VectorCalculator.CalculateMagnitude(game.getPlayer(opponentTeam, i).getPosition(), opponentGoal)))
                  {
-                     isNotFree= false;
+                     isNotFree= true;
                  }
                  else
                  {
                      
-                     isNotFree= true;
+                     isNotFree= false;
                  }
                  
                  
              }
              
-            //buraya %20 şansla gelen durumun tersi dondurulecek
-      return isNotFree; 
+            
+      return VectorCalculator.RandomReverse(isNotFree);
     }
     
 }
