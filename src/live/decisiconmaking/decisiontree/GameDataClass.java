@@ -15,10 +15,12 @@ import arhrs.movement.sccr.internal.SoccerPlayer;
 public class GameDataClass implements GameData{
      SoccerGame game;
     SoccerPlayer player;
+     double shootDistance=10;
 
-    public GameDataClass(SoccerGame game, SoccerPlayer player) {
+    public GameDataClass(SoccerGame game, SoccerPlayer player,double  ShootDistance) {
         this.game = game;
         this.player = player;
+        this.shootDistance = ShootDistance;
     }
 
      @Override
@@ -29,6 +31,11 @@ public class GameDataClass implements GameData{
      @Override
     public SoccerPlayer getPlayer() {
         return player;
+    }
+
+    @Override
+    public double getShootRange() {
+        return shootDistance;
     }
     
     

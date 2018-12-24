@@ -35,7 +35,7 @@ public class BetterAI implements  PlayerAI{
     @Override
     public SteeringBehavior getSteering(SoccerPlayer soccerPlayer, SoccerGame game) {
       
-        GameData gdata = new GameDataClass(game, soccerPlayer);
+        GameData gdata = new GameDataClass(game, soccerPlayer,ShootDistance);
          
         /*
             Action action = root.makeDecision(gdata);

@@ -7,5 +7,6 @@ public interface GameData {
    
     public SoccerGame getGame();
     public SoccerPlayer getPlayer();
+    public double getShootRange();
     
 }
