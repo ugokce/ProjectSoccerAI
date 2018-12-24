@@ -11,6 +11,8 @@ import arhrs.movement.sccr.internal.SoccerPlayer;
 import arhrs.movement.sccr.BetterAIPack.State;
 import arhrs.movement.steering.SteeringBehavior;
 import arhrs.movement.steering.SteeringInfo;
+import live.decisiconmaking.decisiontree.GameData;
+import live.decisiconmaking.decisiontree.GameDataClass;
 import math.geom2d.Vector2D;
 
 /**
@@ -32,9 +34,18 @@ public class BetterAI implements  PlayerAI{
 
     @Override
     public SteeringBehavior getSteering(SoccerPlayer soccerPlayer, SoccerGame game) {
-       ballOwner = getBallOwner(game);
+      
+        GameData gdata = new GameDataClass(game, soccerPlayer);
+         
+        /*
+            Action action = root.makeDecision(gdata);
+            System.out.println(action);
+            System.out.println("-------------------------------------------");*/
+        
+        
+        ballOwner = getBallOwner(game);
        kickTarget = game.getGoalAreaCenter(game.opponent(soccerPlayer.getTeam()));
-        if(ballOwner.getTeam() == soccerPlayer.getTeam())
+       if(ballOwner.getTeam() == soccerPlayer.getTeam())
         {
             //my team have the ball
             if(ballOwner == soccerPlayer)

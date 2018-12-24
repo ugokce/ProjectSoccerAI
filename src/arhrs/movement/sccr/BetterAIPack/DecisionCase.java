@@ -5,16 +5,15 @@
  */
 package arhrs.movement.sccr.BetterAIPack;
 
+import live.decisiconmaking.decisiontree.GameData;
+
 
 
 /**
  *
  * @author Uğurcan
  */
-public enum DecisionCase {
-     AmIAtTheBall,
-     AmIClosestToBallinMyTeam,
-     AmICloseToGoal,
-     IsGoalFreeToGo
-     
+public interface DecisionCase {
+
+    public boolean Check(GameData gamedata);
 }

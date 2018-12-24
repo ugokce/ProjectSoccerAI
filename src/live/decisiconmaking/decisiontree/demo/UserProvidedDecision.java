@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class UserProvidedDecision extends Decision {
 
     String testQuestion;
-
+    
     public UserProvidedDecision(DecisionTreeNode trueNode, DecisionTreeNode falseNode, String testQuestion) {
         super(trueNode, falseNode);
         this.testQuestion = testQuestion;

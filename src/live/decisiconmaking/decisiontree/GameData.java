@@ -1,9 +1,11 @@
 package live.decisiconmaking.decisiontree;
 
+import arhrs.movement.sccr.internal.SoccerGame;
+import arhrs.movement.sccr.internal.SoccerPlayer;
+
 public interface GameData {
-    //burada decisionlarda kullanacağımız sorguları ekleyeceğiz
-    public boolean AmIAtTheBall();
-    public boolean AmIClosestToBallinMyTeam();
-    public boolean AmICloseToGoal();
-    public boolean IsGoalFreeToGo();
+   
+    public SoccerGame getGame();
+    public SoccerPlayer getPlayer();
+    
 }

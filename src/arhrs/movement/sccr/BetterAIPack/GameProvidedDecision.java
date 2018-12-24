@@ -24,23 +24,11 @@ public class GameProvidedDecision extends Decision {
 
     @Override
     protected DecisionTreeNode getBranch(GameData gameData) {
-        
-        switch(dCase)
-        {
-            case AmIAtTheBall:{
-                
-               if( !gameData.AmIAtTheBall())
+
+                 if( dCase.Check(gameData))
                    return falseNode.makeDecision(gameData);
                else return trueNode.makeDecision(gameData);
-            }
-            case AmIClosestToBallinMyTeam:{
-                 if( !gameData.AmIAtTheBall())
-                   return falseNode.makeDecision(gameData);
-               else return trueNode.makeDecision(gameData);
-            }
-        }
-        return null;
-        
+               
     }
     
 }
