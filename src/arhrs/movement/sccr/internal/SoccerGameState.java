@@ -125,7 +125,7 @@ class SoccerGameState extends BasicGameState implements SoccerGame {
         renderSoccerPitch(gameContainer,stateBasedGame,graphics);
 
         renderEtities(gameContainer,stateBasedGame,graphics);
-
+         
         graphics.setColor(c);
     }
 

@@ -25,12 +25,7 @@ public class AmINearTheGoal implements DecisionCase{
          double magnitude = Math.sqrt((kickTarget.minus(soccerPlayer.getPosition()).x()*kickTarget.minus(soccerPlayer.getPosition()).x())+(kickTarget.minus(soccerPlayer.getPosition()).y()*kickTarget.minus(soccerPlayer.getPosition()).y()));
         
          
-         if(gamedata.getShootRange()<magnitude)
-         {
-             return true;
-         }
-         else
-         return false;
+        return gamedata.getShootRange()<magnitude;
         
     }
     

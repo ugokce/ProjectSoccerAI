@@ -22,12 +22,7 @@ public class AmIAtTheBall implements DecisionCase{
         SoccerGame game = gamedata.getGame();
         SoccerPlayer soccerPlayer = gamedata.getPlayer();
         double ourDist = Math.sqrt((game.getBallPosition().minus(soccerPlayer.getPosition()).x()*game.getBallPosition().minus(soccerPlayer.getPosition()).x())+(game.getBallPosition().minus(soccerPlayer.getPosition()).y()*game.getBallPosition().minus(soccerPlayer.getPosition()).y()));
-        if(ourDist <= 11)
-        {
-            return true;
-        }
-        
-        return false;
+        return ourDist <= 11;
     }
     
 }
