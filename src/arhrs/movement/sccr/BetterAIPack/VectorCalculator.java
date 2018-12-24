@@ -6,6 +6,7 @@
 package arhrs.movement.sccr.BetterAIPack;
 
 import math.geom2d.Vector2D;
+import java.util.Random;
 
 /**
  *
@@ -19,6 +20,14 @@ public class VectorCalculator {
         return Math.sqrt((first.minus(second).x()*first.minus(second).x())+(first.minus(second).y()*first.minus(second).y()));
     
         
+    }
+    
+    public static boolean RandomTurn()
+    {
+        Random rnd = new Random();
+        int rndnumber = rnd.nextInt(5);
+        
+        return rndnumber != 1;
     }
     
 }
