@@ -30,6 +30,7 @@ public class SimplePlayerAI implements PlayerAI {
 
         SoccerPlayer p = game.getPlayer(0,0);
 
+        //System.out.println(kickTarget);
 
 
         if (kickTarget!= null)

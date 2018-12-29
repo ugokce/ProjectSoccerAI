@@ -20,7 +20,7 @@ public class MovingEntity extends BasicGameEntity
 
 
     protected SteeringBehavior steeringBehavior;
-    private CollisionHandler collisionHandler;
+    protected CollisionHandler collisionHandler;
 
 
 

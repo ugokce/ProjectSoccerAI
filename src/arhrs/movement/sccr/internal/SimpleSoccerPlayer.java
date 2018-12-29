@@ -2,6 +2,7 @@ package arhrs.movement.sccr.internal;
 
 
 import arhrs.movement.*;
+import arhrs.movement.steering.NoSteering;
 import arhrs.movement.steering.SteeringBehavior;
 import arhrs.movement.steering.SteeringInfo;
 import arhrs.util.VectorUtils;
@@ -13,6 +14,11 @@ import org.newdawn.slick.state.StateBasedGame;
 import java.util.concurrent.*;
 
 class SimpleSoccerPlayer extends MovingEntity implements SoccerPlayer,GoalListener {
+
+    private static final double TIME_COEFFICIENT = 0.3;
+    private static final double MaxAcceleration = 1;
+    private double MaxVelocity = 1;
+    private double MaxRotation = 0.1;
 
     boolean disqualified = false;
     private static final float PlayerRadius = 10;
@@ -67,20 +73,46 @@ class SimpleSoccerPlayer extends MovingEntity implements SoccerPlayer,GoalListen
 
     @Override
     public final void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) {
-/*
+
         steeringBehavior = playerAI.getSteering(this,gameState);
         if (canKickBall())
             ballSteering = playerAI.getBallSteering(this,gameState);
-*/
+
 
         if (disqualified)
             return;
 
-        performAICall();
+        //performAICall();
         applyPlayerLimits();
 
-        super.update(gameContainer,stateBasedGame,i);
+        updatePlayer(gameContainer,stateBasedGame,i);
+        //super.update(gameContainer,stateBasedGame,i);
 
+    }
+
+    private void updatePlayer(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) {
+        SteeringInfo steeringInfo = (steeringBehavior != null) ?
+                steeringBehavior.getSteering(staticInfo,kinematicInfo):SteeringInfo.getNoSteering();
+
+        steeringInfo = applySteeringLimits(steeringInfo);
+
+        kinematicInfo.update(steeringInfo,1*TIME_COEFFICIENT,MaxVelocity,MaxRotation);
+
+
+        staticInfo.update(kinematicInfo,steeringInfo,1* TIME_COEFFICIENT);
+
+        if (collisionHandler!=null)
+            collisionHandler.handle(this);
+    }
+
+    private SteeringInfo applySteeringLimits(SteeringInfo steeringInfo) {
+        if (steeringInfo.steeringType == SteeringInfo.SteeringType.Kinematic &&  steeringInfo.linear.norm()>PlayerMaxVelocity)
+            steeringInfo.linear = steeringInfo.linear.normalize().times(PlayerMaxVelocity);
+
+        if ( steeringInfo.steeringType== SteeringInfo.SteeringType.Dynamic && steeringInfo.linear.norm()>MaxAcceleration)
+                steeringInfo.linear = steeringInfo.linear.normalize().times(MaxAcceleration);
+
+        return steeringInfo;
     }
 
     private void performAICall() {
@@ -137,6 +169,20 @@ class SimpleSoccerPlayer extends MovingEntity implements SoccerPlayer,GoalListen
         if (stamina < FatigueStamina)
             steeringBehavior = FatigueSteering;
 
+        if (ballSteering == null || !validBallSteering(ballSteering))
+            ballSteering = SteeringInfo.getNoSteering();
+
+    }
+
+
+
+    private boolean validBallSteering(SteeringInfo ballSteering) {
+
+        if (!(ballSteering.linear.x()>-1000 && ballSteering.linear.x()<1000) || ! (ballSteering.linear.x()>-1000 && ballSteering.linear.x()<1000))
+        {
+            return false;
+        }
+        return true;
 
     }
 
@@ -158,7 +204,7 @@ class SimpleSoccerPlayer extends MovingEntity implements SoccerPlayer,GoalListen
     }
 
     public Vector2D getPosition(){
-        return staticInfo.getPosition();
+        return staticInfo.getPosition().clone();
     }
 
     @Override

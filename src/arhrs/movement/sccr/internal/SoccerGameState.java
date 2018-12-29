@@ -125,7 +125,7 @@ class SoccerGameState extends BasicGameState implements SoccerGame {
         renderSoccerPitch(gameContainer,stateBasedGame,graphics);
 
         renderEtities(gameContainer,stateBasedGame,graphics);
-         
+
         graphics.setColor(c);
     }
 
@@ -215,16 +215,18 @@ class SoccerGameState extends BasicGameState implements SoccerGame {
 
         checkGoal();
 
-        SimpleSoccerPlayer closestPlayer = players[0].get(0);
-        double minDistance= VectorUtils.distance(ball.getPosition(),closestPlayer.getPosition());
+
 
         int turn = RandomUtils.nextInt(2);
+        SimpleSoccerPlayer closestPlayer = players[turn].get(0);
+        double minDistance= VectorUtils.distance(ball.getPosition(),closestPlayer.getPosition());
+
         for (SimpleSoccerPlayer e : players[turn]
         ) {
             e.update(gameContainer,stateBasedGame,i); // For Debugging purposes kept 1
             double d = VectorUtils.distance(ball.getPosition(),e.getPosition());
             assert !Double.isNaN(d);
-            if (d<minDistance)
+            if (d<minDistance && e.getBallSteering()!=null)
             {
                 minDistance = d;
                 closestPlayer = e;
@@ -237,7 +239,7 @@ class SoccerGameState extends BasicGameState implements SoccerGame {
             e.update(gameContainer,stateBasedGame,i); // For Debugging purposes kept 1
             double d = VectorUtils.distance(ball.getPosition(),e.getPosition());
             assert !Double.isNaN(d);
-            if (d<minDistance)
+            if (d<minDistance && e.getBallSteering() != null)
             {
                 minDistance = d;
                 closestPlayer = e;

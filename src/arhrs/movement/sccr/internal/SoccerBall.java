@@ -33,7 +33,9 @@ public class SoccerBall extends MovingEntity implements GoalListener {
     {
         if (steeringInfo.linear.norm()<MinBallSpeed)
             kinematicInfo = new KinematicInfo(new Vector2D(0,0),0);
-        else kinematicInfo = new KinematicInfo(steeringInfo.linear.normalize().times(SoccerGame.MaxBallSpeed),0);
+        else if (steeringInfo.linear.norm()>SoccerGame.MaxBallSpeed)
+            kinematicInfo = new KinematicInfo(steeringInfo.linear.normalize().times(SoccerGame.MaxBallSpeed),0);
+        else kinematicInfo = new KinematicInfo(steeringInfo.linear.clone(),0);
     }
 
     @Override

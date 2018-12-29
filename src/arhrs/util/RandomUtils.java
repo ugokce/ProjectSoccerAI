@@ -1,5 +1,7 @@
 package arhrs.util;
 
+import org.lwjgl.Sys;
+
 import java.security.SecureRandom;
 import java.util.Random;
 
@@ -7,7 +9,7 @@ import java.util.Random;
  * Created by dindar.oz on 9/29/2017.
  */
 public class RandomUtils {
-    static Random rng = new SecureRandom();
+    static Random rng = new SecureRandom(new byte[]{(byte) System.currentTimeMillis()});
 
     public static double randomBinomial()
     {
@@ -19,6 +21,16 @@ public class RandomUtils {
     }
 
     public static int nextInt(int size) {
+
+
         return rng.nextInt(size);
+    }
+
+    public static long[] nextLongArray(int length) {
+        long arr[] = new long[length];
+        for (int i = 0; i <length; i++) {
+            arr[i] = rng.nextLong();
+        }
+        return arr;
     }
 }
