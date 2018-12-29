@@ -5,6 +5,7 @@
  */
 package arhrs.movement.sccr.BetterAIPack;
 
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.UserProvidedDecision;
 import arhrs.movement.sccr.BetterAIPack.Actions.Action;
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.SimpleAction;
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.DecisionTreeNode;
@@ -30,7 +31,7 @@ public class BetterAI implements  PlayerAI{
     public  double ShootDistance=10;
     PlayerType playerType;
     public Vector2D playerBase;
-
+    DecisionTreeNode root;
     public BetterAI(PlayerType AiType) {
     
        playerType = AiType;
@@ -43,7 +44,7 @@ public class BetterAI implements  PlayerAI{
         
         Vector2D initalPOS = soccerPlayer.getPosition();
         playerBase = playerType.caculateBasePos(playerType, initalPOS, soccerPlayer.getTeam(), game);
-
+        root = buildMyDecisionTree();
     }
 
     
@@ -54,26 +55,20 @@ public class BetterAI implements  PlayerAI{
         SteeringBehavior behaviour;
          
        
-        /*
+        
             Action action = root.makeDecision(gdata);
-            System.out.println(action);
-            System.out.println("-------------------------------------------");*/
-        
-        
-      
-       
-      
-          
+            kickTarget =action.getTarget();
+            return action.getSteering();
             
-     
-        
-        
-       return null;
+            
+
     }
 
     @Override
     public SteeringInfo getBallSteering(SoccerPlayer soccerPlayer, SoccerGame game) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          if (kickTarget!= null)
+            return new SteeringInfo(kickTarget.minus(soccerPlayer.getPosition()),0, SteeringInfo.SteeringType.Kinematic);
+        else return SteeringInfo.getNoSteering();
     }
     
       private static DecisionTreeNode buildMyDecisionTree() {

@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package arhrs.movement.sccr.BetterAIPack.DecisionTree;
+package arhrs.movement.sccr.BetterAIPack;
+
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.Decision;
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.DecisionCase;
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.DecisionTreeNode;
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.GameData;
 
 /**
  *

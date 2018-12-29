@@ -5,27 +5,34 @@
  */
 package arhrs.movement.sccr.BetterAIPack.Actions;
 
+import arhrs.movement.sccr.internal.SoccerGame;
+import arhrs.movement.sccr.internal.SoccerPlayer;
+import arhrs.movement.steering.Seek;
 import arhrs.movement.steering.SteeringBehavior;
 import arhrs.movement.steering.SteeringInfo;
+import math.geom2d.Vector2D;
 
 /**
  *
  * @author Uğurcan
  */
-public class PlayerAction extends Action{
+public class Dribling extends Action{
     //burada objemiz seek gibi her action için spesifik(mesela topu kap,bölgeme dön tarzı) steeringbehaviour lar alacak ve gerektiğinde onları döndürecek.
     
-    public SteeringBehavior playerBehaviour;
+    SoccerPlayer player;
+    SoccerGame game;
             
-    public  PlayerAction(SteeringBehavior behaviour )
+     public  Dribling(Vector2D target,  SoccerPlayer player,SoccerGame game )
     {
-        this.playerBehaviour = behaviour;
+        this.player = player;
+        this.target = target;
+        this.game = game;
     }
     
     
+    @Override
     public SteeringBehavior getSteering()
     {
-        
-        return this.playerBehaviour;
+        return new Seek(game.getBallPosition());
     }
 }

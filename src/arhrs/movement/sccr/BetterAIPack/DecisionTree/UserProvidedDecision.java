@@ -1,8 +1,9 @@
-package arhrs.movement.sccr.BetterAIPack;
+package arhrs.movement.sccr.BetterAIPack.DecisionTree;
 
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.Decision;
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.DecisionTreeNode;
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.GameData;
+import arhrs.movement.steering.SteeringBehavior;
 
 import java.util.Scanner;
 
@@ -27,4 +28,5 @@ public class UserProvidedDecision extends Decision {
             return falseNode.makeDecision(gameData);
         else return trueNode.makeDecision(gameData);
     }
+
 }

@@ -4,7 +4,6 @@ import arhrs.movement.sccr.BetterAIPack.Actions.Action;
 import arhrs.movement.sccr.BetterAIPack.Actions.Action;
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.Decision;
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.DecisionTreeNode;
-import arhrs.movement.sccr.BetterAIPack.UserProvidedDecision;
 
 public class DecisionTreeDemo {
     public static void main(String[] args) {
