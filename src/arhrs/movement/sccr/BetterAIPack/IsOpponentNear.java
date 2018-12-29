@@ -8,7 +8,6 @@ package arhrs.movement.sccr.BetterAIPack;
 import arhrs.movement.sccr.internal.SoccerGame;
 import arhrs.movement.sccr.internal.SoccerPlayer;
 import java.awt.geom.Line2D;
-import live.decisiconmaking.decisiontree.GameData;
 import math.geom2d.Vector2D;
 import org.newdawn.slick.*;
 

@@ -11,13 +11,6 @@ import arhrs.movement.sccr.internal.SoccerPlayer;
 import arhrs.movement.sccr.BetterAIPack.State;
 import arhrs.movement.steering.SteeringBehavior;
 import arhrs.movement.steering.SteeringInfo;
-import live.decisiconmaking.decisiontree.Action;
-import live.decisiconmaking.decisiontree.Decision;
-import live.decisiconmaking.decisiontree.DecisionTreeNode;
-import live.decisiconmaking.decisiontree.GameData;
-import live.decisiconmaking.decisiontree.GameDataClass;
-import live.decisiconmaking.decisiontree.demo.SimpleAction;
-import live.decisiconmaking.decisiontree.demo.UserProvidedDecision;
 import math.geom2d.Vector2D;
 
 /**

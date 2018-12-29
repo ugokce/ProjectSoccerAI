@@ -1,6 +1,6 @@
-package live.decisiconmaking.decisiontree.demo;
+package arhrs.movement.sccr.BetterAIPack;
 
-import live.decisiconmaking.decisiontree.Action;
+import arhrs.movement.sccr.BetterAIPack.Action;
 
 public class SimpleAction extends Action {
     String actionText;

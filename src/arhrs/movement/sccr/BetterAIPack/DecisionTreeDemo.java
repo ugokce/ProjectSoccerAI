@@ -1,8 +1,8 @@
-package live.decisiconmaking.decisiontree.demo;
+package arhrs.movement.sccr.BetterAIPack;
 
-import live.decisiconmaking.decisiontree.Action;
-import live.decisiconmaking.decisiontree.Decision;
-import live.decisiconmaking.decisiontree.DecisionTreeNode;
+import arhrs.movement.sccr.BetterAIPack.Action;
+import arhrs.movement.sccr.BetterAIPack.Decision;
+import arhrs.movement.sccr.BetterAIPack.DecisionTreeNode;
 
 public class DecisionTreeDemo {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package live.decisiconmaking.decisiontree;
+package arhrs.movement.sccr.BetterAIPack;
 
 public interface DecisionTreeNode {
     Action makeDecision(GameData game);

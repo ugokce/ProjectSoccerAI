@@ -1,4 +1,4 @@
-package live.decisiconmaking.decisiontree;
+package arhrs.movement.sccr.BetterAIPack;
 
 import arhrs.movement.sccr.internal.SoccerGame;
 import arhrs.movement.sccr.internal.SoccerPlayer;

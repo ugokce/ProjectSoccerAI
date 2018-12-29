@@ -5,8 +5,6 @@
  */
 package arhrs.movement.sccr.BetterAIPack;
 
-import live.decisiconmaking.decisiontree.GameData;
-
 
 
 /**

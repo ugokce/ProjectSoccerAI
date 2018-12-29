@@ -1,8 +1,8 @@
-package live.decisiconmaking.decisiontree.demo;
+package arhrs.movement.sccr.BetterAIPack;
 
-import live.decisiconmaking.decisiontree.Decision;
-import live.decisiconmaking.decisiontree.DecisionTreeNode;
-import live.decisiconmaking.decisiontree.GameData;
+import arhrs.movement.sccr.BetterAIPack.Decision;
+import arhrs.movement.sccr.BetterAIPack.DecisionTreeNode;
+import arhrs.movement.sccr.BetterAIPack.GameData;
 
 import java.util.Scanner;
 

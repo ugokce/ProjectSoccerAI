@@ -7,7 +7,6 @@ package arhrs.movement.sccr.BetterAIPack;
 
 import arhrs.movement.steering.SteeringBehavior;
 import arhrs.movement.steering.SteeringInfo;
-import live.decisiconmaking.decisiontree.Action;
 
 /**
  *

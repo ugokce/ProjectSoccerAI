@@ -7,7 +7,6 @@ package arhrs.movement.sccr.BetterAIPack;
 
 import arhrs.movement.sccr.internal.SoccerGame;
 import arhrs.movement.sccr.internal.SoccerPlayer;
-import live.decisiconmaking.decisiontree.GameData;
 import math.geom2d.Vector2D;
 
 /**

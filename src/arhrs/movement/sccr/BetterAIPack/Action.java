@@ -1,4 +1,4 @@
-package live.decisiconmaking.decisiontree;
+package arhrs.movement.sccr.BetterAIPack;
 
 public class Action implements DecisionTreeNode {
     @Override

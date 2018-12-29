@@ -1,4 +1,4 @@
-package live.decisiconmaking.decisiontree;
+package arhrs.movement.sccr.BetterAIPack;
 
 public abstract class Decision implements DecisionTreeNode{
 
