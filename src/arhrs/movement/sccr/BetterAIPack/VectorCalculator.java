@@ -22,17 +22,4 @@ public class VectorCalculator {
         
     }
     
-    public static boolean RandomReverse(boolean bool)
-    {
-        Random rnd = new Random();
-        int rndnumber = rnd.nextInt(5);
-        
-        if(rndnumber == 1)
-            return !bool;
-        else
-            return bool;
-            
-            
-    }
-    
 }

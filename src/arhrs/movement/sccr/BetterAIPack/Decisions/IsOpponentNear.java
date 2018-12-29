@@ -50,7 +50,7 @@ public class IsOpponentNear implements DecisionCase{
              }
              
             
-      return VectorCalculator.RandomReverse(isNotFree);
+      return isNotFree;
     }
     
 }
