@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package arhrs.movement.sccr.BetterAIPack;
+package arhrs.movement.sccr.BetterAIPack.DecisionTree;
+
+
 
 /**
  *
  * @author Uğurcan
  */
-interface State {
-    
-    
-    
+public interface DecisionCase {
+
+    public boolean Check(GameData gamedata);
 }

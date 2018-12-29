@@ -1,8 +1,10 @@
-package arhrs.movement.sccr.BetterAIPack;
+package arhrs.movement.sccr.BetterAIPack.DecisionTree;
 
-import arhrs.movement.sccr.BetterAIPack.Action;
-import arhrs.movement.sccr.BetterAIPack.Decision;
-import arhrs.movement.sccr.BetterAIPack.DecisionTreeNode;
+import arhrs.movement.sccr.BetterAIPack.Actions.Action;
+import arhrs.movement.sccr.BetterAIPack.Actions.Action;
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.Decision;
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.DecisionTreeNode;
+import arhrs.movement.sccr.BetterAIPack.UserProvidedDecision;
 
 public class DecisionTreeDemo {
     public static void main(String[] args) {

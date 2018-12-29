@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package arhrs.movement.sccr.BetterAIPack;
+package arhrs.movement.sccr.BetterAIPack.Decisions;
 
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.DecisionCase;
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.GameData;
+import arhrs.movement.sccr.BetterAIPack.PlayerType;
 import arhrs.movement.sccr.internal.SoccerGame;
 import arhrs.movement.sccr.internal.SoccerPlayer;
 
@@ -16,9 +19,13 @@ public class AmIDefender implements DecisionCase {
 
     @Override
     public boolean Check(GameData gamedata) {
-        SoccerGame game = gamedata.getGame();
+        
         SoccerPlayer soccerPlayer = gamedata.getPlayer();
-        return false;
+        
+        return gamedata.getPLtype() == PlayerType.Defence;
+        
+        
+      
     }
     
 }

@@ -1,8 +1,8 @@
 package arhrs.movement.sccr.BetterAIPack;
 
-import arhrs.movement.sccr.BetterAIPack.Decision;
-import arhrs.movement.sccr.BetterAIPack.DecisionTreeNode;
-import arhrs.movement.sccr.BetterAIPack.GameData;
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.Decision;
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.DecisionTreeNode;
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.GameData;
 
 import java.util.Scanner;
 

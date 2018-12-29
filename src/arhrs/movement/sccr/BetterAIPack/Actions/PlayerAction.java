@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package arhrs.movement.sccr.BetterAIPack;
+package arhrs.movement.sccr.BetterAIPack.Actions;
 
 import arhrs.movement.steering.SteeringBehavior;
 import arhrs.movement.steering.SteeringInfo;

@@ -1,4 +1,6 @@
-package arhrs.movement.sccr.BetterAIPack;
+package arhrs.movement.sccr.BetterAIPack.DecisionTree;
+
+import arhrs.movement.sccr.BetterAIPack.Actions.Action;
 
 public abstract class Decision implements DecisionTreeNode{
 

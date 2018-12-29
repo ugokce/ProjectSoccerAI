@@ -1,6 +1,7 @@
-package arhrs.movement.sccr.BetterAIPack;
+package arhrs.movement.sccr.BetterAIPack.DecisionTree;
 
-import arhrs.movement.sccr.BetterAIPack.Action;
+import arhrs.movement.sccr.BetterAIPack.Actions.Action;
+import arhrs.movement.sccr.BetterAIPack.Actions.Action;
 
 public class SimpleAction extends Action {
     String actionText;

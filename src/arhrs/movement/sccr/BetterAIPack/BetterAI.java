@@ -5,10 +5,15 @@
  */
 package arhrs.movement.sccr.BetterAIPack;
 
+import arhrs.movement.sccr.BetterAIPack.Actions.Action;
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.SimpleAction;
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.DecisionTreeNode;
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.GameData;
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.Decision;
 import arhrs.movement.sccr.internal.PlayerAI; 
 import arhrs.movement.sccr.internal.SoccerGame;
 import arhrs.movement.sccr.internal.SoccerPlayer;
-import arhrs.movement.sccr.BetterAIPack.State;
+//import arhrs.movement.sccr.BetterAIPack.State;
 import arhrs.movement.steering.SteeringBehavior;
 import arhrs.movement.steering.SteeringInfo;
 import math.geom2d.Vector2D;
@@ -23,19 +28,29 @@ public class BetterAI implements  PlayerAI{
     public SoccerPlayer ballOwner;
     private Vector2D kickTarget;
     public  double ShootDistance=10;
+    PlayerType playerType;
+    public Vector2D playerBase;
+
+    public BetterAI(PlayerType AiType) {
+    
+       playerType = AiType;
+      
+    }
     
     
     @Override
     public void init(SoccerPlayer soccerPlayer, SoccerGame game) {
         
-    
-    
+        Vector2D initalPOS = soccerPlayer.getPosition();
+        playerBase = playerType.caculateBasePos(playerType, initalPOS, soccerPlayer.getTeam(), game);
+
     }
 
+    
     @Override
     public SteeringBehavior getSteering(SoccerPlayer soccerPlayer, SoccerGame game) {
       
-        GameData gdata = new GameDataClass(game, soccerPlayer,ShootDistance);
+        GameData gdata = new GameDataClass(game, soccerPlayer,ShootDistance,playerType);
         SteeringBehavior behaviour;
          
        

@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package arhrs.movement.sccr.BetterAIPack;
+package arhrs.movement.sccr.BetterAIPack.Decisions;
 
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.DecisionCase;
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.GameData;
+import arhrs.movement.sccr.BetterAIPack.VectorCalculator;
 import arhrs.movement.sccr.internal.SoccerGame;
 import arhrs.movement.sccr.internal.SoccerPlayer;
 import java.awt.geom.Line2D;
@@ -26,8 +29,9 @@ public class IsOpponentNear implements DecisionCase{
         boolean isNotFree=true;
         SoccerGame game = gamedata.getGame();
         SoccerPlayer soccerPlayer = gamedata.getPlayer();
-        Vector2D opponentGoal = game.getGoalAreaCenter(game.opponent(soccerPlayer.getTeam()));
         int opponentTeam = game.opponent(soccerPlayer.getTeam());
+        Vector2D opponentGoal = game.getGoalAreaCenter(opponentTeam);
+        
         double diffOur = VectorCalculator.CalculateMagnitude(soccerPlayer.getPosition(), opponentGoal);
  
              for(int i=0;i<game.getPlayerCount(opponentTeam);i++)

@@ -5,6 +5,7 @@
  */
 package arhrs.movement.sccr.BetterAIPack;
 
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.GameData;
 import arhrs.movement.sccr.internal.SoccerGame;
 import arhrs.movement.sccr.internal.SoccerPlayer;
 
@@ -16,11 +17,15 @@ public class GameDataClass implements GameData{
      SoccerGame game;
     SoccerPlayer player;
      double shootDistance=10;
+     PlayerType PLtype;
 
-    public GameDataClass(SoccerGame game, SoccerPlayer player,double  ShootDistance) {
+ 
+
+    public GameDataClass(SoccerGame game, SoccerPlayer player,double  ShootDistance,PlayerType Ptype) {
         this.game = game;
         this.player = player;
         this.shootDistance = ShootDistance;
+        this.PLtype = Ptype;
     }
 
      @Override
@@ -36,6 +41,16 @@ public class GameDataClass implements GameData{
     @Override
     public double getShootRange() {
         return shootDistance;
+    }
+
+    @Override
+    public double getShootDistance() {
+        return shootDistance;
+    }
+
+    @Override
+    public PlayerType getPLtype() {
+       return  PLtype;
     }
     
     
