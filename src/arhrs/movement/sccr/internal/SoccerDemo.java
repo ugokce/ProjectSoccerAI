@@ -49,11 +49,11 @@ public class SoccerDemo extends StateBasedGame {
         SimpleSoccerPlayer p14 = new SimpleSoccerPlayer(demo.getGameState(),0,new BetterAI(PlayerType.Middle));
         SimpleSoccerPlayer p15 = new SimpleSoccerPlayer(demo.getGameState(),0,new BetterAI(PlayerType.Middle));
 
-        SimpleSoccerPlayer p21 = new SimpleSoccerPlayer(demo.getGameState(),1,new SimplePlayerAI());
-        SimpleSoccerPlayer p22 = new SimpleSoccerPlayer(demo.getGameState(),1,new SimplePlayerAI());
-        SimpleSoccerPlayer p23 = new SimpleSoccerPlayer(demo.getGameState(),1,new SimplePlayerAI());
-        SimpleSoccerPlayer p24 = new SimpleSoccerPlayer(demo.getGameState(),1,new SimplePlayerAI());
-        SimpleSoccerPlayer p25 = new SimpleSoccerPlayer(demo.getGameState(),1,new SimplePlayerAI());
+        SimpleSoccerPlayer p21 = new SimpleSoccerPlayer(demo.getGameState(),1,new BetterAI(PlayerType.Forward));
+        SimpleSoccerPlayer p22 = new SimpleSoccerPlayer(demo.getGameState(),1,new BetterAI(PlayerType.Defence));
+        SimpleSoccerPlayer p23 = new SimpleSoccerPlayer(demo.getGameState(),1,new BetterAI(PlayerType.Defence));
+        SimpleSoccerPlayer p24 = new SimpleSoccerPlayer(demo.getGameState(),1,new BetterAI(PlayerType.Middle));
+        SimpleSoccerPlayer p25 = new SimpleSoccerPlayer(demo.getGameState(),1,new BetterAI(PlayerType.Middle));
 
 
         demo.getGameState().addPlayer(0,p11);

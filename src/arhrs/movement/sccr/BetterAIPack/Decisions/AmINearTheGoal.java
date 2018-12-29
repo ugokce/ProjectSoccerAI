@@ -7,6 +7,7 @@ package arhrs.movement.sccr.BetterAIPack.Decisions;
 
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.DecisionCase;
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.GameData;
+import arhrs.movement.sccr.BetterAIPack.VectorCalculator;
 import arhrs.movement.sccr.internal.SoccerGame;
 import arhrs.movement.sccr.internal.SoccerPlayer;
 import math.geom2d.Vector2D;
@@ -23,10 +24,15 @@ public class AmINearTheGoal implements DecisionCase{
          SoccerGame game = gamedata.getGame();
          SoccerPlayer soccerPlayer = gamedata.getPlayer();
          Vector2D kickTarget = game.getGoalAreaCenter(game.opponent(soccerPlayer.getTeam()));
-         double magnitude = Math.sqrt((kickTarget.minus(soccerPlayer.getPosition()).x()*kickTarget.minus(soccerPlayer.getPosition()).x())+(kickTarget.minus(soccerPlayer.getPosition()).y()*kickTarget.minus(soccerPlayer.getPosition()).y()));
-        
+         double magnitude = VectorCalculator.CalculateMagnitude(soccerPlayer.getPosition(), kickTarget);
+        if(magnitude<=200)
+        {
+            return true;
+        }
+        else
+            return false;
          
-        return gamedata.getShootRange()<magnitude;
+        
         
     }
     

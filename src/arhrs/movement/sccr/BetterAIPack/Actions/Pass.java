@@ -28,16 +28,23 @@ public class Pass extends Action{
         this.game = game;
         this.base = base;
     }
-    public Vector2D findClosestTeamMate()
+    public Vector2D findOpenTeamMate()
     {
         double distance=game.getWidth();
-        Vector2D POS = new Vector2D(0,0);
+        Vector2D POS = null;
         for (int i = 0; i < game.getPlayerCount(player.getTeam()); i++) 
         {
-              if(distance>VectorCalculator.CalculateMagnitude(player.getPosition(), game.getPlayer(player.getTeam(), i).getPosition()))
+            Vector2D teamMatePos = game.getPlayer(player.getTeam(), i).getPosition();
+            if(teamMatePos != player.getPosition())
+              for(int k=0;k<game.getPlayerCount(game.opponent(player.getTeam()));k++)
               {
-               distance=VectorCalculator.CalculateMagnitude(player.getPosition(), game.getPlayer(player.getTeam(), i).getPosition());
-               POS =  game.getPlayer(player.getTeam(), i).getPosition();
+                  Vector2D oppoPos = game.getPlayer(game.opponent(player.getTeam()), k).getPosition();
+                  double oppoTOus = VectorCalculator.CalculateMagnitude(player.getPosition(), oppoPos);
+                  double oppoTOteamMate = VectorCalculator.CalculateMagnitude(oppoPos,teamMatePos);
+                  if(VectorCalculator.CalculateMagnitude(player.getPosition(),teamMatePos)<(100+(oppoTOus+oppoTOteamMate)))
+                  {
+                      POS = teamMatePos;
+                  }
               }
         }
         return POS;
@@ -47,8 +54,8 @@ public class Pass extends Action{
     @Override
     public SteeringBehavior getSteering()
     {
-        this.target = findClosestTeamMate();
-        return new Arrive(base);
+        this.target = findOpenTeamMate();
+        return new Seek(game.getBallPosition());
     }
     
 }

@@ -21,6 +21,7 @@ import arhrs.movement.sccr.BetterAIPack.Decisions.AmIAtTheBall;
 import arhrs.movement.sccr.BetterAIPack.Decisions.AmIClosestToTheBallInMyTeam;
 import arhrs.movement.sccr.BetterAIPack.Decisions.AmIDefender;
 import arhrs.movement.sccr.BetterAIPack.Decisions.AmINearTheGoal;
+import arhrs.movement.sccr.BetterAIPack.Decisions.IsOpponentNear;
 import arhrs.movement.sccr.BetterAIPack.Decisions.IsOpponentNearGoal;
 import arhrs.movement.sccr.internal.PlayerAI; 
 import arhrs.movement.sccr.internal.SoccerGame;
@@ -64,7 +65,7 @@ public class BetterAI implements  PlayerAI{
       
         GameData gdata = new GameDataClass(game, soccerPlayer,ShootDistance,playerType);
             Action action = root.makeDecision(gdata);
-            if(action.getTarget()!= null)
+            
             kickTarget =action.getTarget();
             
             return action.getSteering();
@@ -81,19 +82,19 @@ public class BetterAI implements  PlayerAI{
     }
     
       private static DecisionTreeNode buildMyDecisionTree(SoccerGame game,SoccerPlayer player,Vector2D basePOS) {
-        Action dribble = new Dribling(game);
+        Action dribble = new Dribling(game, player);
         Action pass = new Pass( player, game,basePOS);
-        Action shoot  = new Shoot(game,player);
+        Action shoot  = new Shoot(game,player.getTeam());
         Action DefenceInGoalArea= new DefenceInGoalArea(game);
         Action runToBase= new RunToBase(basePOS);
         
         
         
         Decision AmIDefender = new GameProvidedDecision(runToBase, DefenceInGoalArea, new AmIDefender());
-        Decision IsOpponentNearGoal = new GameProvidedDecision(DefenceInGoalArea, AmIDefender, new IsOpponentNearGoal());
-        Decision opponentIsNear = new GameProvidedDecision(pass, dribble, new AmIAtTheBall() );
+       Decision IsOpponentNearGoal = new GameProvidedDecision(DefenceInGoalArea, AmIDefender, new IsOpponentNearGoal());
+        Decision opponentIsNear = new GameProvidedDecision(pass, dribble, new IsOpponentNear() );
         Decision AmInearGoal = new GameProvidedDecision(shoot, opponentIsNear, new AmINearTheGoal());
-        Decision AmIatTheBall = new GameProvidedDecision(AmInearGoal,IsOpponentNearGoal ,new AmIAtTheBall());
+        Decision AmIatTheBall = new GameProvidedDecision(AmInearGoal,DefenceInGoalArea ,new AmIAtTheBall());
         Decision AmIClosestToBallInmyTeam = new GameProvidedDecision(AmIatTheBall, runToBase,new AmIClosestToTheBallInMyTeam());
 
 

@@ -21,10 +21,10 @@ public class Dribling extends Action{
     
  
     SoccerGame game;
-            
-     public  Dribling( SoccerGame game )
+    SoccerPlayer player;
+     public  Dribling( SoccerGame game ,SoccerPlayer plyr)
     {
-       
+       this.player = plyr;
         this.game = game;
     }
     
@@ -32,6 +32,8 @@ public class Dribling extends Action{
     @Override
     public SteeringBehavior getSteering()
     {
+        this.target=game.getGoalAreaCenter(game.opponent(player.getTeam()));
         return new Seek(game.getBallPosition());
+       
     }
 }

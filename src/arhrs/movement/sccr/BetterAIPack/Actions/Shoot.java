@@ -8,6 +8,8 @@ package arhrs.movement.sccr.BetterAIPack.Actions;
 import arhrs.movement.sccr.internal.SoccerGame;
 import arhrs.movement.sccr.internal.SoccerPlayer;
 import arhrs.movement.steering.Arrive;
+import arhrs.movement.steering.Face;
+import arhrs.movement.steering.NoSteering;
 import arhrs.movement.steering.Seek;
 import arhrs.movement.steering.SteeringBehavior;
 import math.geom2d.Vector2D;
@@ -19,10 +21,10 @@ import math.geom2d.Vector2D;
 public class Shoot extends Action{
 
     SoccerGame game;
-    SoccerPlayer player;
-      public Shoot(SoccerGame game,SoccerPlayer plyr )
+    int team;
+      public Shoot(SoccerGame game,int team )
     {
-      
+      this.team = team;
         this.game = game;
         
     }
@@ -31,8 +33,8 @@ public class Shoot extends Action{
     @Override
     public SteeringBehavior getSteering()
     {
-        this.target = game.getGoalAreaCenter(game.opponent(player.getTeam()));
-        return new Seek(game.getBallPosition());
+        this.target = game.getGoalAreaCenter(game.opponent(team));
+        return new NoSteering();
     }
     
 }
