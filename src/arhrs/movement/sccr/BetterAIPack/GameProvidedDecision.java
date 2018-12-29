@@ -26,7 +26,8 @@ public class GameProvidedDecision extends Decision {
     @Override
     protected DecisionTreeNode getBranch(GameData gameData) {
 
-                 if( dCase.Check(gameData))
+       
+                 if(!dCase.Check(gameData))
                    return falseNode.makeDecision(gameData);
                else return trueNode.makeDecision(gameData);
                

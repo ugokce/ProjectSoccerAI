@@ -1,6 +1,8 @@
 package arhrs.movement.sccr.internal;
 
 
+import arhrs.movement.sccr.BetterAIPack.BetterAI;
+import arhrs.movement.sccr.BetterAIPack.PlayerType;
 import arhrs.movement.sccr.SimplePlayerAI;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
@@ -39,12 +41,13 @@ public class SoccerDemo extends StateBasedGame {
       //  SimpleSoccerPlayer p14 = new SimpleSoccerPlayer(demo.getGameState(),0,new SoccerBot(3));
       //  SimpleSoccerPlayer p15 = new SimpleSoccerPlayer(demo.getGameState(),0,new SoccerBot(4));
 
-
-        SimpleSoccerPlayer p11 = new SimpleSoccerPlayer(demo.getGameState(),0,new SimplePlayerAI());
-        SimpleSoccerPlayer p12 = new SimpleSoccerPlayer(demo.getGameState(),0,new SimplePlayerAI());
-        SimpleSoccerPlayer p13 = new SimpleSoccerPlayer(demo.getGameState(),0,new SimplePlayerAI());
-        SimpleSoccerPlayer p14 = new SimpleSoccerPlayer(demo.getGameState(),0,new SimplePlayerAI());
-        SimpleSoccerPlayer p15 = new SimpleSoccerPlayer(demo.getGameState(),0,new SimplePlayerAI());
+        
+      
+        SimpleSoccerPlayer p11 = new SimpleSoccerPlayer(demo.getGameState(),0,new BetterAI(PlayerType.Forward));
+        SimpleSoccerPlayer p12 = new SimpleSoccerPlayer(demo.getGameState(),0,new BetterAI(PlayerType.Defence));
+        SimpleSoccerPlayer p13 = new SimpleSoccerPlayer(demo.getGameState(),0,new BetterAI(PlayerType.Defence));
+        SimpleSoccerPlayer p14 = new SimpleSoccerPlayer(demo.getGameState(),0,new BetterAI(PlayerType.Middle));
+        SimpleSoccerPlayer p15 = new SimpleSoccerPlayer(demo.getGameState(),0,new BetterAI(PlayerType.Middle));
 
         SimpleSoccerPlayer p21 = new SimpleSoccerPlayer(demo.getGameState(),1,new SimplePlayerAI());
         SimpleSoccerPlayer p22 = new SimpleSoccerPlayer(demo.getGameState(),1,new SimplePlayerAI());

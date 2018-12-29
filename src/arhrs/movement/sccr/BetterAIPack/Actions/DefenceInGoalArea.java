@@ -17,13 +17,12 @@ import math.geom2d.Vector2D;
  */
 public class DefenceInGoalArea extends Action
 {
-    SoccerPlayer player;
+    
     SoccerGame game;
             
-     public  DefenceInGoalArea(Vector2D target,  SoccerPlayer player,SoccerGame game )
+     public  DefenceInGoalArea(SoccerGame game )
     {
-        this.player = player;
-        this.target = target;
+       
         this.game = game;
     }
     

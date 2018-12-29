@@ -21,11 +21,12 @@ public class Pass extends Action{
 
     SoccerPlayer player;
     SoccerGame game;
-     public  Pass(Vector2D target,  SoccerPlayer player,SoccerGame game )
+    Vector2D base;
+     public  Pass(SoccerPlayer player,SoccerGame game,Vector2D base )
     {
         this.player = player;
-        this.target = target;
         this.game = game;
+        this.base = base;
     }
     public Vector2D findClosestTeamMate()
     {
@@ -47,7 +48,7 @@ public class Pass extends Action{
     public SteeringBehavior getSteering()
     {
         this.target = findClosestTeamMate();
-        return new Seek(game.getBallPosition());
+        return new Arrive(base);
     }
     
 }

@@ -7,10 +7,21 @@ package arhrs.movement.sccr.BetterAIPack;
 
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.UserProvidedDecision;
 import arhrs.movement.sccr.BetterAIPack.Actions.Action;
+import arhrs.movement.sccr.BetterAIPack.Actions.DefenceInGoalArea;
+import arhrs.movement.sccr.BetterAIPack.Actions.Dribling;
+import arhrs.movement.sccr.BetterAIPack.Actions.Pass;
+import arhrs.movement.sccr.BetterAIPack.Actions.RunToBase;
+import arhrs.movement.sccr.BetterAIPack.Actions.Shoot;
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.SimpleAction;
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.DecisionTreeNode;
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.GameData;
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.Decision;
+import arhrs.movement.sccr.BetterAIPack.DecisionTree.DecisionCase;
+import arhrs.movement.sccr.BetterAIPack.Decisions.AmIAtTheBall;
+import arhrs.movement.sccr.BetterAIPack.Decisions.AmIClosestToTheBallInMyTeam;
+import arhrs.movement.sccr.BetterAIPack.Decisions.AmIDefender;
+import arhrs.movement.sccr.BetterAIPack.Decisions.AmINearTheGoal;
+import arhrs.movement.sccr.BetterAIPack.Decisions.IsOpponentNearGoal;
 import arhrs.movement.sccr.internal.PlayerAI; 
 import arhrs.movement.sccr.internal.SoccerGame;
 import arhrs.movement.sccr.internal.SoccerPlayer;
@@ -44,7 +55,7 @@ public class BetterAI implements  PlayerAI{
         
         Vector2D initalPOS = soccerPlayer.getPosition();
         playerBase = playerType.caculateBasePos(playerType, initalPOS, soccerPlayer.getTeam(), game);
-        root = buildMyDecisionTree();
+        root = buildMyDecisionTree(game,soccerPlayer,playerBase);
     }
 
     
@@ -52,12 +63,10 @@ public class BetterAI implements  PlayerAI{
     public SteeringBehavior getSteering(SoccerPlayer soccerPlayer, SoccerGame game) {
       
         GameData gdata = new GameDataClass(game, soccerPlayer,ShootDistance,playerType);
-        SteeringBehavior behaviour;
-         
-       
-        
             Action action = root.makeDecision(gdata);
+            if(action.getTarget()!= null)
             kickTarget =action.getTarget();
+            
             return action.getSteering();
             
             
@@ -71,23 +80,26 @@ public class BetterAI implements  PlayerAI{
         else return SteeringInfo.getNoSteering();
     }
     
-      private static DecisionTreeNode buildMyDecisionTree() {
-        Action dribble = new SimpleAction("I am dribbleing");
-        Action pass = new SimpleAction("I am passing");
-        Action shoot  = new SimpleAction("I am shooting");
-        Action runToBall= new SimpleAction( "I am running to ball" );
-        Action runToBase= new SimpleAction( "I am running to my base" );
+      private static DecisionTreeNode buildMyDecisionTree(SoccerGame game,SoccerPlayer player,Vector2D basePOS) {
+        Action dribble = new Dribling(game);
+        Action pass = new Pass( player, game,basePOS);
+        Action shoot  = new Shoot(game,player);
+        Action DefenceInGoalArea= new DefenceInGoalArea(game);
+        Action runToBase= new RunToBase(basePOS);
+        
+        
+        
+        Decision AmIDefender = new GameProvidedDecision(runToBase, DefenceInGoalArea, new AmIDefender());
+        Decision IsOpponentNearGoal = new GameProvidedDecision(DefenceInGoalArea, AmIDefender, new IsOpponentNearGoal());
+        Decision opponentIsNear = new GameProvidedDecision(pass, dribble, new AmIAtTheBall() );
+        Decision AmInearGoal = new GameProvidedDecision(shoot, opponentIsNear, new AmINearTheGoal());
+        Decision AmIatTheBall = new GameProvidedDecision(AmInearGoal,IsOpponentNearGoal ,new AmIAtTheBall());
+        Decision AmIClosestToBallInmyTeam = new GameProvidedDecision(AmIatTheBall, runToBase,new AmIClosestToTheBallInMyTeam());
 
 
-        Decision opponentIsNear = new UserProvidedDecision(pass, dribble,"Is opponent near?");
-        Decision nearGoal = new UserProvidedDecision(shoot, opponentIsNear,"Am I near the goal?");
-        Decision atTheBall = new UserProvidedDecision(nearGoal, runToBall,"Am I at the ball?");
-        Decision closestToBall = new UserProvidedDecision(atTheBall, runToBase,"Am I closest to the ball in my team?");
 
 
-
-
-        return closestToBall;
+        return AmIClosestToBallInmyTeam;
     }
 
    

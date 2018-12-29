@@ -7,6 +7,7 @@ package arhrs.movement.sccr.BetterAIPack.Decisions;
 
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.DecisionCase;
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.GameData;
+import arhrs.movement.sccr.BetterAIPack.VectorCalculator;
 import arhrs.movement.sccr.internal.SoccerGame;
 import arhrs.movement.sccr.internal.SoccerPlayer;
 import math.geom2d.Vector2D;
@@ -23,18 +24,17 @@ public class AmIClosestToTheBallInMyTeam implements DecisionCase {
         
     SoccerGame game = gamedata.getGame();
     SoccerPlayer soccerPlayer = gamedata.getPlayer();
-    double ourDist = Math.sqrt((game.getBallPosition().minus(soccerPlayer.getPosition()).x()*game.getBallPosition().minus(soccerPlayer.getPosition()).x())+(game.getBallPosition().minus(soccerPlayer.getPosition()).y()*game.getBallPosition().minus(soccerPlayer.getPosition()).y()));
+   
+    double ourDist = VectorCalculator.CalculateMagnitude(game.getBallPosition(), soccerPlayer.getPosition());
         for(int i=0;i<game.getPlayerCount(soccerPlayer.getTeam());i++)
         {
-                 double otherDist = Math.sqrt((game.getBallPosition().minus(game.getPlayer(soccerPlayer.getTeam(), i).getPosition()).x()*game.getBallPosition().minus(game.getPlayer(soccerPlayer.getTeam(), i).getPosition()).x())+(game.getBallPosition().minus(game.getPlayer(soccerPlayer.getTeam(), i).getPosition()).y()*game.getBallPosition().minus(game.getPlayer(soccerPlayer.getTeam(), i).getPosition()).y()));
+                 double otherDist = VectorCalculator.CalculateMagnitude(game.getBallPosition(), game.getPlayer(soccerPlayer.getTeam(), i).getPosition());
                  if(ourDist>otherDist)
                  {
                      return false;
                  }
         
         }
-        
-    
      return true;
       
           
