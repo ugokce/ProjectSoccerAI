@@ -17,7 +17,7 @@ import math.geom2d.Vector2D;
  * @author Uğurcan
  */
 public class Dribling extends Action{
-    //burada objemiz seek gibi her action için spesifik(mesela topu kap,bölgeme dön tarzı) steeringbehaviour lar alacak ve gerektiğinde onları döndürecek.
+  
     
  
     SoccerGame game;

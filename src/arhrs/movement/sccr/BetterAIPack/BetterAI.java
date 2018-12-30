@@ -20,6 +20,7 @@ import arhrs.movement.sccr.BetterAIPack.DecisionTree.DecisionCase;
 import arhrs.movement.sccr.BetterAIPack.Decisions.AmIAtTheBall;
 import arhrs.movement.sccr.BetterAIPack.Decisions.AmIClosestToTheBallInMyTeam;
 import arhrs.movement.sccr.BetterAIPack.Decisions.AmIDefender;
+import arhrs.movement.sccr.BetterAIPack.Decisions.AmIMiddleorForward;
 import arhrs.movement.sccr.BetterAIPack.Decisions.AmINearTheGoal;
 import arhrs.movement.sccr.BetterAIPack.Decisions.IsOpponentNear;
 import arhrs.movement.sccr.BetterAIPack.Decisions.IsBallCloseToMyGoal;
@@ -90,12 +91,13 @@ public class BetterAI implements  PlayerAI{
         
         
         
-        Decision AmIDefender = new GameProvidedDecision(runToBase, Defence, new AmIDefender());
-       Decision IsOpponentNearGoal = new GameProvidedDecision(AmIDefender,Defence , new IsBallCloseToMyGoal());
+        Decision AmIDefender = new GameProvidedDecision(Defence, runToBase, new AmIDefender());
         Decision opponentIsNear = new GameProvidedDecision(pass, dribble, new IsOpponentNear() );
         Decision AmInearGoal = new GameProvidedDecision(shoot, opponentIsNear, new AmINearTheGoal());
-        Decision AmIatTheBall = new GameProvidedDecision(AmInearGoal,IsOpponentNearGoal ,new AmIAtTheBall());
-        Decision AmIClosestToBallInmyTeam = new GameProvidedDecision(AmIatTheBall, runToBase,new AmIClosestToTheBallInMyTeam());
+        Decision AmIatTheBall = new GameProvidedDecision(AmInearGoal,Defence ,new AmIAtTheBall());
+        Decision AmIMiddleOrForward = new GameProvidedDecision(Defence, runToBase, new AmIMiddleorForward());
+        Decision IsBallCloseToMyGoal = new GameProvidedDecision(AmIDefender, AmIMiddleOrForward, new IsBallCloseToMyGoal());
+        Decision AmIClosestToBallInmyTeam = new GameProvidedDecision(AmIatTheBall, IsBallCloseToMyGoal,new AmIClosestToTheBallInMyTeam());
 
 
 

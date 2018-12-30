@@ -24,7 +24,7 @@ public class IsBallCloseToMyGoal implements DecisionCase{
         SoccerGame game = gamedata.getGame();
         SoccerPlayer soccerPlayer = gamedata.getPlayer();
         Vector2D ourGoal = game.getGoalAreaCenter(soccerPlayer.getTeam());
-        if(VectorCalculator.CalculateMagnitude(ourGoal, game.getBallPosition())<350)
+        if(VectorCalculator.CalculateMagnitude(ourGoal, game.getBallPosition())<=400)
         {
             return true;
         }

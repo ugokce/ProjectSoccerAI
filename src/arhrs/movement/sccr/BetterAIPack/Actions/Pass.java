@@ -9,6 +9,7 @@ import arhrs.movement.sccr.BetterAIPack.VectorCalculator;
 import arhrs.movement.sccr.internal.SoccerGame;
 import arhrs.movement.sccr.internal.SoccerPlayer;
 import arhrs.movement.steering.Arrive;
+import arhrs.movement.steering.NoSteering;
 import arhrs.movement.steering.Seek;
 import arhrs.movement.steering.SteeringBehavior;
 import math.geom2d.Vector2D;

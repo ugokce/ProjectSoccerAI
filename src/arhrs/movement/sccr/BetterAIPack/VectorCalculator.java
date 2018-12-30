@@ -21,5 +21,15 @@ public class VectorCalculator {
     
         
     }
+        public static boolean RandomReverse(boolean bool)
+    {
+        Random rnd = new Random();
+        int rndnumber = rnd.nextInt(5);
+        
+        return rndnumber != 1;
+        
+            
+            
+    }
     
 }

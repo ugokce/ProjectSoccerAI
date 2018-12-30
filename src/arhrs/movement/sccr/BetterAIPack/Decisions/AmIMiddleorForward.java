@@ -8,6 +8,7 @@ package arhrs.movement.sccr.BetterAIPack.Decisions;
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.DecisionCase;
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.GameData;
 import arhrs.movement.sccr.BetterAIPack.PlayerType;
+import arhrs.movement.sccr.BetterAIPack.VectorCalculator;
 import arhrs.movement.sccr.internal.SoccerPlayer;
 
 /**
@@ -29,6 +30,7 @@ public class AmIMiddleorForward implements DecisionCase {
             i_am = false; 
         }
         
+      // return VectorCalculator.RandomReverse(i_am);
         return i_am;
     }
     
