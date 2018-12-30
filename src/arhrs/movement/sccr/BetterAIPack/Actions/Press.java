@@ -15,12 +15,12 @@ import math.geom2d.Vector2D;
  *
  * @author Burak Kara
  */
-public class DefenceInGoalArea extends Action
+public class Press extends Action
 {
     
     SoccerGame game;
             
-     public  DefenceInGoalArea(SoccerGame game )
+     public  Press(SoccerGame game )
     {
        
         this.game = game;

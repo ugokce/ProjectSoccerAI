@@ -7,7 +7,7 @@ package arhrs.movement.sccr.BetterAIPack;
 
 import arhrs.movement.sccr.BetterAIPack.DecisionTree.UserProvidedDecision;
 import arhrs.movement.sccr.BetterAIPack.Actions.Action;
-import arhrs.movement.sccr.BetterAIPack.Actions.DefenceInGoalArea;
+import arhrs.movement.sccr.BetterAIPack.Actions.Press;
 import arhrs.movement.sccr.BetterAIPack.Actions.Dribling;
 import arhrs.movement.sccr.BetterAIPack.Actions.Pass;
 import arhrs.movement.sccr.BetterAIPack.Actions.RunToBase;
@@ -85,7 +85,7 @@ public class BetterAI implements  PlayerAI{
         Action dribble = new Dribling(game, player);
         Action pass = new Pass( player, game,basePOS);
         Action shoot  = new Shoot(game,player.getTeam());
-        Action DefenceInGoalArea= new DefenceInGoalArea(game);
+        Action DefenceInGoalArea= new Press(game);
         Action runToBase= new RunToBase(basePOS);
         
         
