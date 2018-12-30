@@ -94,7 +94,7 @@ public class BetterAI implements  PlayerAI{
        Decision IsOpponentNearGoal = new GameProvidedDecision(DefenceInGoalArea, AmIDefender, new IsOpponentNearGoal());
         Decision opponentIsNear = new GameProvidedDecision(pass, dribble, new IsOpponentNear() );
         Decision AmInearGoal = new GameProvidedDecision(shoot, opponentIsNear, new AmINearTheGoal());
-        Decision AmIatTheBall = new GameProvidedDecision(AmInearGoal,DefenceInGoalArea ,new AmIAtTheBall());
+        Decision AmIatTheBall = new GameProvidedDecision(AmInearGoal,IsOpponentNearGoal ,new AmIAtTheBall());
         Decision AmIClosestToBallInmyTeam = new GameProvidedDecision(AmIatTheBall, runToBase,new AmIClosestToTheBallInMyTeam());
 
 
