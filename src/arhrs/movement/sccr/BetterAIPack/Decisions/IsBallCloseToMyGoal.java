@@ -16,7 +16,7 @@ import math.geom2d.Vector2D;
  *
  * @author Burak Kara
  */
-public class IsOpponentNearGoal implements DecisionCase{
+public class IsBallCloseToMyGoal implements DecisionCase{
 
     @Override
     public boolean Check(GameData gamedata) {
@@ -24,19 +24,18 @@ public class IsOpponentNearGoal implements DecisionCase{
         SoccerGame game = gamedata.getGame();
         SoccerPlayer soccerPlayer = gamedata.getPlayer();
         Vector2D ourGoal = game.getGoalAreaCenter(soccerPlayer.getTeam());
-        int opponentTeam = game.opponent(soccerPlayer.getTeam());
-        
-        for(int i=0;i<game.getPlayerCount(opponentTeam);i++)
+        if(VectorCalculator.CalculateMagnitude(ourGoal, game.getBallPosition())<350)
         {
-            Vector2D opponentPOS = game.getPlayer(opponentTeam, i).getPosition();
-            if(VectorCalculator.CalculateMagnitude(opponentPOS, game.getBallPosition())<30&&(VectorCalculator.CalculateMagnitude(ourGoal, opponentPOS)<game.getWidth()/4))
-            {
-                return true;
-            }
-            
+            return true;
         }
+        else
+            return false;
         
-        return false;
+        
+        
+       
+        
+        
         
         
     }

@@ -22,7 +22,7 @@ import arhrs.movement.sccr.BetterAIPack.Decisions.AmIClosestToTheBallInMyTeam;
 import arhrs.movement.sccr.BetterAIPack.Decisions.AmIDefender;
 import arhrs.movement.sccr.BetterAIPack.Decisions.AmINearTheGoal;
 import arhrs.movement.sccr.BetterAIPack.Decisions.IsOpponentNear;
-import arhrs.movement.sccr.BetterAIPack.Decisions.IsOpponentNearGoal;
+import arhrs.movement.sccr.BetterAIPack.Decisions.IsBallCloseToMyGoal;
 import arhrs.movement.sccr.internal.PlayerAI; 
 import arhrs.movement.sccr.internal.SoccerGame;
 import arhrs.movement.sccr.internal.SoccerPlayer;
@@ -85,13 +85,13 @@ public class BetterAI implements  PlayerAI{
         Action dribble = new Dribling(game, player);
         Action pass = new Pass( player, game,basePOS);
         Action shoot  = new Shoot(game,player.getTeam());
-        Action DefenceInGoalArea= new Press(game);
+        Action Defence= new Press(game);
         Action runToBase= new RunToBase(basePOS);
         
         
         
-        Decision AmIDefender = new GameProvidedDecision(runToBase, DefenceInGoalArea, new AmIDefender());
-       Decision IsOpponentNearGoal = new GameProvidedDecision(DefenceInGoalArea, AmIDefender, new IsOpponentNearGoal());
+        Decision AmIDefender = new GameProvidedDecision(runToBase, Defence, new AmIDefender());
+       Decision IsOpponentNearGoal = new GameProvidedDecision(AmIDefender,Defence , new IsBallCloseToMyGoal());
         Decision opponentIsNear = new GameProvidedDecision(pass, dribble, new IsOpponentNear() );
         Decision AmInearGoal = new GameProvidedDecision(shoot, opponentIsNear, new AmINearTheGoal());
         Decision AmIatTheBall = new GameProvidedDecision(AmInearGoal,IsOpponentNearGoal ,new AmIAtTheBall());
