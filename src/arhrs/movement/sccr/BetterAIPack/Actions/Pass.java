@@ -36,13 +36,14 @@ public class Pass extends Action{
         for (int i = 0; i < game.getPlayerCount(player.getTeam()); i++) 
         {
             Vector2D teamMatePos = game.getPlayer(player.getTeam(), i).getPosition();
-            if(teamMatePos != player.getPosition())
+            if(VectorCalculator.CalculateMagnitude(player.getPosition(), teamMatePos)>10)
               for(int k=0;k<game.getPlayerCount(game.opponent(player.getTeam()));k++)
-              {
+              {   
+                  
                   Vector2D oppoPos = game.getPlayer(game.opponent(player.getTeam()), k).getPosition();
                   double oppoTOus = VectorCalculator.CalculateMagnitude(player.getPosition(), oppoPos);
                   double oppoTOteamMate = VectorCalculator.CalculateMagnitude(oppoPos,teamMatePos);
-                  if(VectorCalculator.CalculateMagnitude(player.getPosition(),teamMatePos)<(11+(oppoTOus+oppoTOteamMate)))
+                  if(VectorCalculator.CalculateMagnitude(player.getPosition(),teamMatePos)<(100+(oppoTOus+oppoTOteamMate)))
                   {
                       POS = teamMatePos;
                   }

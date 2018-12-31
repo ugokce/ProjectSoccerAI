@@ -31,5 +31,31 @@ public class VectorCalculator {
             
             
     }
+    public static boolean IsOpponentBetweenUs(Vector2D us,Vector2D target,Vector2D opponent, int team)
+    {
+          
+                if((opponent.y()<=target.y()&&opponent.y()>us.y())||(opponent.y()<=us.y()&&opponent.y()>=target.y()))
+                {
+                     if(team == 0)
+                     {
+                        if(opponent.x()>=us.x()&& opponent.x()<=target.x())
+                        {
+                            return true;
+                        }
+                     }
+                     else
+                     {
+                       if(opponent.x()<=us.x()&& opponent.x()>=target.x())
+                        {
+                            return true;
+                        } 
+                     }
+                         
+                
+                }
+              
+                return false;
+                
+    }
     
 }

@@ -27,7 +27,7 @@ public class IsOpponentNear implements DecisionCase{
     @Override
     public boolean Check(GameData gamedata) {
        
-        boolean isNotFree=false;
+        boolean Pass=false;
         SoccerGame game = gamedata.getGame();
         SoccerPlayer soccerPlayer = gamedata.getPlayer();
         int opponentTeam = game.opponent(soccerPlayer.getTeam());
@@ -39,20 +39,26 @@ public class IsOpponentNear implements DecisionCase{
              {
                  Vector2D oppoPos = game.getPlayer(game.opponent(soccerPlayer.getTeam()), i).getPosition();
                  double oppoTOus = VectorCalculator.CalculateMagnitude(soccerPlayer.getPosition(), oppoPos);
-                 double oppoTOhisGoal = VectorCalculator.CalculateMagnitude(oppoPos,opponentGoal);
-                 if(((-diffLimit+oppoTOus+oppoTOhisGoal)<diffOur)&& oppoTOus<15)
-                 {
-                     return true;
-                 }
-                 else
-                 {
-                     return false;
-                 }
+                 
+                 
+                if(VectorCalculator.IsOpponentBetweenUs(soccerPlayer.getPosition(),opponentGoal, oppoPos, soccerPlayer.getTeam())&&oppoTOus<200)
+                {
+                    return true;
+                }
+                else
+                {
+                    Pass = false;
+                    
+                }
+                 
+           
                  
              }
              
             
-      return isNotFree;
+      return Pass;
     }
+    
+   
     
 }
