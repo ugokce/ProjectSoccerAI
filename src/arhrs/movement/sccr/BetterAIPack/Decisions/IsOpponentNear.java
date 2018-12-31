@@ -20,7 +20,7 @@ import org.newdawn.slick.*;
  */
 public class IsOpponentNear implements DecisionCase{
 
-    private double diffLimit=20;
+    private double diffLimit=11;
 
    
     
@@ -40,7 +40,7 @@ public class IsOpponentNear implements DecisionCase{
                  Vector2D oppoPos = game.getPlayer(game.opponent(soccerPlayer.getTeam()), i).getPosition();
                  double oppoTOus = VectorCalculator.CalculateMagnitude(soccerPlayer.getPosition(), oppoPos);
                  double oppoTOhisGoal = VectorCalculator.CalculateMagnitude(oppoPos,opponentGoal);
-                 if((-diffLimit+oppoTOus+oppoTOhisGoal)<diffOur)
+                 if(((-diffLimit+oppoTOus+oppoTOhisGoal)<diffOur)&& oppoTOus<15)
                  {
                      return true;
                  }

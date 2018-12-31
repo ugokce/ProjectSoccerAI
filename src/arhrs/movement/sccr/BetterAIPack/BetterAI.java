@@ -72,7 +72,7 @@ public class BetterAI implements  PlayerAI{
             return action.getSteering();
             
             
-
+    
     }
 
     @Override

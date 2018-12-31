@@ -42,7 +42,7 @@ public class Pass extends Action{
                   Vector2D oppoPos = game.getPlayer(game.opponent(player.getTeam()), k).getPosition();
                   double oppoTOus = VectorCalculator.CalculateMagnitude(player.getPosition(), oppoPos);
                   double oppoTOteamMate = VectorCalculator.CalculateMagnitude(oppoPos,teamMatePos);
-                  if(VectorCalculator.CalculateMagnitude(player.getPosition(),teamMatePos)<(20+(oppoTOus+oppoTOteamMate)))
+                  if(VectorCalculator.CalculateMagnitude(player.getPosition(),teamMatePos)<(11+(oppoTOus+oppoTOteamMate)))
                   {
                       POS = teamMatePos;
                   }

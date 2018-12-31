@@ -16,6 +16,47 @@ public enum PlayerType {
     
     Defence,Middle,Forward;
     
+    public Vector2D getAttackPos(PlayerType plType,Vector2D basePos,int team,SoccerGame game)
+    {
+       
+        switch(plType)
+        {
+            case Forward:{
+                if (team==0) {
+                    return new Vector2D(basePos.x()+(game.getWidth()/1.8),basePos.y() );
+                }
+                else
+                {
+                    return new Vector2D(basePos.x()-(game.getWidth()/1.8),basePos.y() );
+                }
+            }
+            case Middle:
+            {
+                 if (team==0) {
+                    return new Vector2D(basePos.x()+(game.getWidth()/6),basePos.y() );
+                }
+                else
+                {
+                    return new Vector2D(basePos.x()-(game.getWidth()/6),basePos.y() );
+                }
+                
+            }
+            default:
+            {
+                if(team == 0)
+                {
+                    return new Vector2D(basePos.x(),basePos.y() );
+                }
+                else
+                {
+                     return new Vector2D(basePos.x(),basePos.y() );
+                }
+            }
+            
+        }
+        
+    }
+    
     public Vector2D caculateBasePos(PlayerType plType,Vector2D initialPOS,int team,SoccerGame game)
     {
         switch(plType)
@@ -33,11 +74,11 @@ public enum PlayerType {
             {
                 if(team == 0)
                 {
-                    return new Vector2D(initialPOS.x()+(game.getWidth()/10),initialPOS.y() );
+                    return new Vector2D(initialPOS.x(),initialPOS.y() );
                 }
                 else
                 {
-                     return new Vector2D(initialPOS.x()-(game.getWidth()/10),initialPOS.y() );
+                     return new Vector2D(initialPOS.x(),initialPOS.y() );
                 }
             }
             

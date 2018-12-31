@@ -32,7 +32,8 @@ public class Dribling extends Action{
     @Override
     public SteeringBehavior getSteering()
     {
-        this.target=game.getGoalAreaCenter(game.opponent(player.getTeam()));
+        Vector2D opponentGoal = game.getGoalAreaCenter(game.opponent(player.getTeam()));
+        this.target=new Vector2D(opponentGoal.x(), opponentGoal.y());
         return new Seek(game.getBallPosition());
        
     }
