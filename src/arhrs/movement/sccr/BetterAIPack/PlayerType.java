@@ -73,11 +73,11 @@ public enum PlayerType {
             case Middle:
             {
                  if (team==0) {
-                    return new Vector2D(initialPOS.x()+(game.getWidth()/5),initialPOS.y() );
+                    return new Vector2D(initialPOS.x()+(game.getWidth()/5.5),initialPOS.y() );
                 }
                 else
                 {
-                    return new Vector2D(initialPOS.x()-(game.getWidth()/5),initialPOS.y() );
+                    return new Vector2D(initialPOS.x()-(game.getWidth()/5.5),initialPOS.y() );
                 }
                 
             }
