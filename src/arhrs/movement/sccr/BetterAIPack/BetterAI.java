@@ -55,7 +55,7 @@ public class BetterAI implements  PlayerAI{
     @Override
     public void init(SoccerPlayer soccerPlayer, SoccerGame game) {
         
-        Vector2D initalPOS = soccerPlayer.getInitialPosition();
+        Vector2D initalPOS = soccerPlayer.getPosition();
         playerBase = playerType.caculateBasePos(playerType, initalPOS, soccerPlayer.getTeam(), game);
         root = buildMyDecisionTree(game,soccerPlayer,playerBase);
     }
@@ -68,14 +68,6 @@ public class BetterAI implements  PlayerAI{
             Action action = root.makeDecision(gdata);
             
             kickTarget =action.getTarget();
-            
-            if(VectorCalculator.CalculateMagnitude(game.getBallPosition(),game.getGoalAreaCenter(soccerPlayer.getTeam()) )>game.getWidth()*0.6)
-            {
-                
-                playerBase = playerType.getAttackPos(playerType, playerBase, soccerPlayer.getTeam(), game);
-            }
-            else
-                 playerBase = playerType.caculateBasePos(playerType, soccerPlayer.getInitialPosition(), soccerPlayer.getTeam(), game);
             
             return action.getSteering();
             
