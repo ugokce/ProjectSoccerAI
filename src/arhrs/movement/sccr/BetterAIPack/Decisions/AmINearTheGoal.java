@@ -25,7 +25,7 @@ public class AmINearTheGoal implements DecisionCase{
          SoccerPlayer soccerPlayer = gamedata.getPlayer();
          Vector2D kickTarget = game.getGoalAreaCenter(game.opponent(soccerPlayer.getTeam()));
          double magnitude = VectorCalculator.CalculateMagnitude(soccerPlayer.getPosition(), kickTarget);
-        if(magnitude<=200)
+        if(magnitude<=250)
         {
             return true;
         }

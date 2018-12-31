@@ -69,14 +69,14 @@ public class BetterAI implements  PlayerAI{
             
             kickTarget =action.getTarget();
             
-            if(VectorCalculator.CalculateMagnitude(game.getBallPosition(),game.getGoalAreaCenter(soccerPlayer.getTeam()) )>game.getWidth()*0.6)
+         /*  if(VectorCalculator.CalculateMagnitude(game.getBallPosition(),game.getGoalAreaCenter(soccerPlayer.getTeam()) )>game.getWidth()/2)
             {
                 
                 playerBase = playerType.getAttackPos(playerType, playerBase, soccerPlayer.getTeam(), game);
             }
             else
                  playerBase = playerType.caculateBasePos(playerType, soccerPlayer.getInitialPosition(), soccerPlayer.getTeam(), game);
-            
+            */
             return action.getSteering();
             
             

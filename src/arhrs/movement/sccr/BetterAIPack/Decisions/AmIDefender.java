@@ -20,7 +20,7 @@ public class AmIDefender implements DecisionCase {
     @Override
     public boolean Check(GameData gamedata) {
         SoccerPlayer soccerPlayer = gamedata.getPlayer();
-        return gamedata.getPLtype() == PlayerType.Defence;
+        return gamedata.getPLtype() == PlayerType.Defence || gamedata.getPLtype()==PlayerType.Middle;
     }
     
 }
