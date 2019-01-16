@@ -63,22 +63,33 @@ public enum PlayerType {
         {
             case Forward:{
                 if (team==0) {
-                    return new Vector2D(initialPOS.x()+(game.getWidth()/2),initialPOS.y() );
+                    return new Vector2D(initialPOS.x()+(game.getWidth()/1.5),initialPOS.y() );
                 }
                 else
                 {
-                    return new Vector2D(initialPOS.x()-(game.getWidth()/2),initialPOS.y() );
+                    return new Vector2D(initialPOS.x()-(game.getWidth()/1.5),initialPOS.y() );
                 }
+            }
+            case Middle:
+            {
+                 if (team==0) {
+                    return new Vector2D(initialPOS.x()-(game.getWidth()/6),initialPOS.y() );
+                }
+                else
+                {
+                    return new Vector2D(initialPOS.x()+(game.getWidth()/6),initialPOS.y() );
+                }
+                
             }
             default:
             {
                 if(team == 0)
                 {
-                    return new Vector2D(initialPOS.x(),initialPOS.y() );
+                    return new Vector2D(initialPOS.x()-(game.getWidth()/20),initialPOS.y() );
                 }
                 else
                 {
-                     return new Vector2D(initialPOS.x(),initialPOS.y() );
+                     return new Vector2D(initialPOS.x()+(game.getWidth()/20),initialPOS.y() );
                 }
             }
             

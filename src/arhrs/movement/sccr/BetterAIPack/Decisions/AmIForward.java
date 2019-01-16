@@ -20,7 +20,7 @@ public class AmIForward implements DecisionCase {
     @Override
     public boolean Check(GameData gamedata) {
         SoccerPlayer soccerPlayer = gamedata.getPlayer();
-        return gamedata.getPLtype() == PlayerType.Forward;
+        return gamedata.getPLtype() == PlayerType.Forward || gamedata.getPLtype() == PlayerType.Middle;
     }
     
 }
