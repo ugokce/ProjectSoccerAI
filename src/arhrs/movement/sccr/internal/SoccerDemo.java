@@ -4,7 +4,6 @@ package arhrs.movement.sccr.internal;
 import arhrs.movement.sccr.BetterAIPack.BetterAI;
 import arhrs.movement.sccr.BetterAIPack.PlayerType;
 import arhrs.movement.sccr.SimplePlayerAI;
-import arhrs.movement.sccr.bots.anil_burak.AnilBurakPlayerAI;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
